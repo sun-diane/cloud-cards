@@ -1,22 +1,20 @@
 import type { CardData } from "./types";
 
-// Build-time glob: Vite resolves all files in these folders at compile time.
-const iconFiles = import.meta.glob("/public/icons/*.*", { eager: false, query: "?url", import: "default" });
-const artFiles = import.meta.glob("/public/art/*.*", { eager: false, query: "?url", import: "default" });
+// Build-time glob: Vite resolves all filenames at compile time.
+// We only need the keys (file paths), not the module contents.
+const iconFiles = import.meta.glob("/public/icons/*.*", { eager: false });
+const artFiles = import.meta.glob("/public/art/*.*", { eager: false });
 
-// Build a lookup: artKey → resolved public path
-// Glob keys look like "/public/icons/amazon-ec2-C.svg"
+// Build a lookup: artKey → public-relative path
 function buildExtensionMap(globResult: Record<string, unknown>): Record<string, string> {
   const map: Record<string, string> = {};
   for (const key of Object.keys(globResult)) {
-    // Extract filename without extension as the artKey
     const filename = key.split("/").pop() || "";
     const dotIdx = filename.lastIndexOf(".");
     if (dotIdx === -1) continue;
     const stem = filename.substring(0, dotIdx);
-    const ext = filename.substring(dotIdx); // includes the dot
-    // Store as public-relative path (strip "/public" prefix)
-    map[stem] = key.replace(/^\/public/, "") ;
+    // Convert "/public/icons/foo.svg" → "/icons/foo.svg"
+    map[stem] = key.replace(/^\/public/, "");
   }
   return map;
 }
@@ -30,7 +28,6 @@ export function getArtSrc(card: CardData): string {
   return primary[card.artKey] || fallback[card.artKey] || getPlaceholder(card);
 }
 
-// Legacy compat — no longer needed for guessing, but kept for any callers
 export function getArtAttemptCount(_card: CardData): number {
   return 1;
 }
