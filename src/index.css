@@ -128,17 +128,17 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(
-      125deg,
+      135deg,
       transparent 0%,
-      hsla(0, 80%, 60%, 0.1) 15%,
-      hsla(45, 90%, 55%, 0.12) 30%,
-      transparent 45%,
-      hsla(180, 70%, 50%, 0.1) 60%,
-      hsla(270, 60%, 55%, 0.12) 75%,
-      transparent 100%
+      hsla(0, 80%, 60%, 0.12) 12%,
+      hsla(45, 90%, 55%, 0.14) 25%,
+      transparent 40%,
+      hsla(180, 70%, 50%, 0.12) 55%,
+      hsla(270, 60%, 55%, 0.14) 70%,
+      transparent 85%
     );
-    background-size: 200% 200%;
-    animation: holo-move 3s ease-in-out infinite;
+    background-size: 300% 300%;
+    animation: holo-move 4s ease-in-out infinite;
     pointer-events: none;
     border-radius: inherit;
     z-index: 2;
