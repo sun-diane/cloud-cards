@@ -10,7 +10,7 @@ export default function CardBack({ large, className }: CardBackProps) {
     <div
       className={cn(
         "rounded-xl overflow-hidden card-shadow",
-        large ? "w-[340px] h-[480px]" : "w-[260px] h-[370px]",
+        large ? "w-[340px] h-[380px]" : "w-[260px] h-[310px]",
         className
       )}
     >
