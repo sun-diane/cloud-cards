@@ -1,6 +1,7 @@
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Package, LayoutGrid, Swords } from "lucide-react";
+import cloudLogo from "@/assets/cloud-logo.png";
 
 const navItems = [
   { to: "/", label: "Open Packs", icon: Package },
