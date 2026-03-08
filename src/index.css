@@ -153,17 +153,17 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(
-      135deg,
+      90deg,
       transparent 0%,
-      hsla(0, 0%, 78%, 0.45) 12%,
-      hsla(220, 8%, 74%, 0.5) 25%,
-      transparent 40%,
-      hsla(200, 8%, 76%, 0.45) 55%,
+      hsla(0, 0%, 78%, 0.45) 15%,
+      hsla(220, 8%, 74%, 0.5) 30%,
+      hsla(210, 6%, 76%, 0.45) 50%,
       hsla(240, 8%, 74%, 0.5) 70%,
-      transparent 85%
+      hsla(200, 8%, 76%, 0.45) 85%,
+      transparent 100%
     );
-    background-size: 300% 300%;
-    animation: ultra-move 18s linear infinite;
+    background-size: 200% 100%;
+    animation: ultra-move 10s linear infinite;
     pointer-events: none;
     border-radius: inherit;
     z-index: 2;
