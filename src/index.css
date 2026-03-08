@@ -155,11 +155,12 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      hsla(0, 0%, 78%, 0.45) 15%,
-      hsla(220, 8%, 74%, 0.5) 30%,
-      hsla(210, 6%, 76%, 0.45) 50%,
-      hsla(240, 8%, 74%, 0.5) 70%,
-      hsla(200, 8%, 76%, 0.45) 85%,
+      transparent 35%,
+      hsla(0, 0%, 80%, 0.4) 42%,
+      hsla(220, 8%, 76%, 0.45) 48%,
+      hsla(210, 6%, 78%, 0.4) 52%,
+      hsla(240, 8%, 76%, 0.45) 58%,
+      transparent 65%,
       transparent 100%
     );
     background-size: 200% 100%;
