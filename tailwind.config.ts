@@ -57,6 +57,12 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        rarity: {
+          common: "hsl(var(--rarity-common))",
+          uncommon: "hsl(var(--rarity-uncommon))",
+          rare: "hsl(var(--rarity-rare))",
+          ultra: "hsl(var(--rarity-ultra))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -2,95 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 220 20% 97%;
+    --foreground: 220 30% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 30% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 30% 10%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 220 60% 18%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 15% 92%;
+    --secondary-foreground: 220 30% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 15% 94%;
+    --muted-foreground: 220 10% 50%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 25 95% 53%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 25 95% 53%;
 
-    --radius: 0.5rem;
+    --radius: 0.625rem;
+
+    /* Card rarity borders */
+    --rarity-common: 220 10% 70%;
+    --rarity-uncommon: 142 50% 45%;
+    --rarity-rare: 217 80% 55%;
+    --rarity-ultra: 270 60% 55%;
+    --rarity-legendary-1: 0 85% 55%;
+    --rarity-legendary-2: 45 95% 55%;
+    --rarity-legendary-3: 140 55% 45%;
+    --rarity-legendary-4: 210 80% 55%;
+    --rarity-legendary-5: 280 65% 55%;
+
+    /* Surfaces */
+    --surface-elevated: 0 0% 100%;
+    --shadow-card: 0 0% 0% / 0.08;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 220 25% 8%;
+    --foreground: 220 15% 90%;
+    --card: 220 22% 12%;
+    --card-foreground: 220 15% 90%;
+    --popover: 220 22% 12%;
+    --popover-foreground: 220 15% 90%;
+    --primary: 220 50% 65%;
+    --primary-foreground: 220 30% 8%;
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 220 15% 85%;
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 10% 55%;
+    --accent: 25 95% 53%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 25 95% 53%;
+    --surface-elevated: 220 22% 14%;
+    --shadow-card: 0 0% 0% / 0.25;
   }
 }
 
@@ -98,8 +90,112 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
   }
+}
+
+@layer components {
+  .card-shadow {
+    box-shadow: 0 2px 16px hsl(var(--shadow-card)),
+                0 1px 4px hsl(var(--shadow-card));
+  }
+
+  .card-border-common {
+    border: 3px solid hsl(var(--rarity-common));
+  }
+  .card-border-uncommon {
+    border: 3px solid hsl(var(--rarity-uncommon));
+  }
+  .card-border-rare {
+    border: 3px solid hsl(var(--rarity-rare));
+  }
+  .card-border-ultra {
+    border: 3px solid hsl(var(--rarity-ultra));
+  }
+  .card-border-legendary {
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+  .card-border-legendary::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    padding: 3px;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--rarity-legendary-1)),
+      hsl(var(--rarity-legendary-2)),
+      hsl(var(--rarity-legendary-3)),
+      hsl(var(--rarity-legendary-4)),
+      hsl(var(--rarity-legendary-5)),
+      hsl(var(--rarity-legendary-1))
+    );
+    background-size: 300% 300%;
+    animation: rainbow-border 4s linear infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .holo-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .holo-shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      125deg,
+      transparent 0%,
+      hsla(0, 80%, 60%, 0.1) 15%,
+      hsla(45, 90%, 55%, 0.12) 30%,
+      transparent 45%,
+      hsla(180, 70%, 50%, 0.1) 60%,
+      hsla(270, 60%, 55%, 0.12) 75%,
+      transparent 100%
+    );
+    background-size: 200% 200%;
+    animation: holo-move 3s ease-in-out infinite;
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: 2;
+  }
+
+  .flip-card {
+    perspective: 1200px;
+  }
+  .flip-card-inner {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+  .flip-card-inner.flipped {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front,
+  .flip-card-back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .flip-card-front {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes rainbow-border {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes holo-move {
+  0% { background-position: 200% 0%; }
+  50% { background-position: 0% 200%; }
+  100% { background-position: 200% 0%; }
 }
