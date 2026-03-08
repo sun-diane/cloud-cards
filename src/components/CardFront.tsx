@@ -30,7 +30,6 @@ interface CardFrontProps {
 export default function CardFront({ card, count, large, owned = true, onClick }: CardFrontProps) {
   const [imgError, setImgError] = useState(false);
   const artSrc = imgError ? getPlaceholder(card) : getArtSrc(card);
-  const isFullBleed = card.artType === "image";
   const isLegendary = card.rarity === "Legendary";
   const isUltraRare = card.rarity === "Ultra Rare";
 
@@ -57,18 +56,17 @@ export default function CardFront({ card, count, large, owned = true, onClick }:
 
       {/* Art area */}
       <div className={cn(
-        "relative mx-3 my-2 rounded-lg overflow-hidden bg-muted flex items-center justify-center",
+        "relative overflow-hidden bg-muted flex items-center justify-center",
         large ? "h-[200px]" : "h-[140px]",
-        isFullBleed && "mx-0 my-0 rounded-none"
+        isUltraRare || isLegendary
+          ? "mx-0 my-0 rounded-none"
+          : "mx-3 my-2 rounded-lg"
       )}>
         <img
           src={artSrc}
           alt={card.name}
           onError={() => setImgError(true)}
-          className={cn(
-            "object-contain",
-            isFullBleed ? "w-full h-full object-cover" : "w-16 h-16"
-          )}
+          className="w-full h-full object-cover"
         />
       </div>
 

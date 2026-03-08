@@ -9,6 +9,7 @@ export function getArtSrc(card: CardData): string {
   if (card.artType === "image") {
     return `/art/${card.artKey}.${imageExts[0]}`;
   }
+  // Icons are now full PNGs
   return `/icons/${card.artKey}.${faviconExts[0]}`;
 }
 

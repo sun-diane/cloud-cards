@@ -155,18 +155,21 @@
     background: linear-gradient(
       135deg,
       transparent 0%,
-      hsla(270, 30%, 75%, 0.08) 20%,
-      hsla(240, 20%, 80%, 0.1) 40%,
-      transparent 50%,
-      hsla(280, 25%, 70%, 0.08) 65%,
-      hsla(220, 30%, 80%, 0.1) 80%,
-      transparent 100%
+      hsla(0, 0%, 90%, 0.35) 15%,
+      hsla(220, 15%, 85%, 0.4) 25%,
+      hsla(0, 0%, 95%, 0.5) 35%,
+      transparent 45%,
+      hsla(200, 10%, 88%, 0.35) 55%,
+      hsla(0, 0%, 92%, 0.45) 65%,
+      hsla(240, 10%, 85%, 0.4) 75%,
+      transparent 90%
     );
     background-size: 250% 250%;
-    animation: ultra-move 5s linear infinite;
+    animation: ultra-move 4s linear infinite;
     pointer-events: none;
     border-radius: inherit;
     z-index: 2;
+    mix-blend-mode: overlay;
   }
 
   .flip-card {
