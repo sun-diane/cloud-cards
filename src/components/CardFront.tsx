@@ -23,14 +23,16 @@ interface CardFrontProps {
   card: CardData;
   count?: number;
   large?: boolean;
+  owned?: boolean;
   onClick?: () => void;
 }
 
-export default function CardFront({ card, count, large, onClick }: CardFrontProps) {
+export default function CardFront({ card, count, large, owned = true, onClick }: CardFrontProps) {
   const [imgError, setImgError] = useState(false);
   const artSrc = imgError ? getPlaceholder(card) : getArtSrc(card);
   const isFullBleed = card.artType === "image";
   const isLegendary = card.rarity === "Legendary";
+  const isUltraRare = card.rarity === "Ultra Rare";
 
   return (
     <div
@@ -38,7 +40,8 @@ export default function CardFront({ card, count, large, onClick }: CardFrontProp
       className={cn(
         "relative flex flex-col bg-card rounded-xl overflow-hidden card-shadow cursor-pointer transition-transform hover:scale-[1.02]",
         rarityBorder[card.rarity] || "card-border-common",
-        isLegendary && "holo-shimmer",
+        isLegendary && owned && "holo-shimmer",
+        isUltraRare && owned && "ultra-shimmer",
         large ? "w-[340px] h-[380px]" : "w-[260px] h-[310px]"
       )}
     >

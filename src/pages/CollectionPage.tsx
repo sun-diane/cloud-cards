@@ -116,6 +116,7 @@ export default function CollectionPage() {
             >
               <CardFront
                 card={card}
+                owned={count > 0}
                 onClick={() => setSelectedCard(card)}
               />
               <span className={cn(
