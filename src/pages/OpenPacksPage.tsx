@@ -1,10 +1,13 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useGame } from "@/context/GameContext";
 import type { CardData } from "@/data/types";
 import CardFront from "@/components/CardFront";
 import CardBack from "@/components/CardBack";
 import AdModal from "@/components/AdModal";
 import { cn } from "@/lib/utils";
+import { toPng } from "html-to-image";
+import { Share2 } from "lucide-react";
+import { toast } from "sonner";
 
 function formatTime(ms: number) {
   const s = Math.floor(ms / 1000);
@@ -22,6 +25,8 @@ export default function OpenPacksPage() {
   const [pulled, setPulled] = useState<CardData[]>([]);
   const [revealedCount, setRevealedCount] = useState(0);
   const [showAd, setShowAd] = useState(false);
+  const [copying, setCopying] = useState(false);
+  const pullRef = useRef<HTMLDivElement>(null);
 
   const handleOpen = useCallback(() => {
     if (packsAvailable <= 0) return;
@@ -63,6 +68,30 @@ export default function OpenPacksPage() {
     setShowAd(false);
     grantAdPack();
   };
+
+  const handleSharePull = async () => {
+    if (!pullRef.current) return;
+    setCopying(true);
+    try {
+      const dataUrl = await toPng(pullRef.current, {
+        backgroundColor: "#f5f6f8",
+        pixelRatio: 2,
+      });
+      const res = await fetch(dataUrl);
+      const blob = await res.blob();
+      await navigator.clipboard.write([
+        new ClipboardItem({ "image/png": blob }),
+      ]);
+      toast.success("Pack pull copied to clipboard!");
+    } catch {
+      toast.error("Failed to copy — try right-clicking to save instead.");
+    } finally {
+      setCopying(false);
+    }
+  };
+
+  const topRow = pulled.slice(0, 3);
+  const bottomRow = pulled.slice(3);
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
@@ -133,31 +162,59 @@ export default function OpenPacksPage() {
         </div>
       )}
 
-      {/* Card reveals */}
+      {/* Card reveals - 3+2 layout */}
       {(phase === "backs" || phase === "revealing" || phase === "done") && (
-        <div className="flex flex-wrap justify-center gap-4">
-          {pulled.map((card, i) => {
-            const isRevealed = i < revealedCount;
-            return (
-              <div key={i} className="flip-card w-[260px] h-[310px]">
-                <div className={cn("flip-card-inner relative w-full h-full", isRevealed && "flipped")}>
-                  {/* Back face */}
-                  <div className="flip-card-back absolute inset-0">
-                    <CardBack />
-                  </div>
-                  {/* Front face */}
-                  <div className="flip-card-front absolute inset-0">
-                    <CardFront card={card} />
+        <div ref={pullRef} className="flex flex-col items-center gap-4 p-4">
+          {/* Top row - 3 cards */}
+          <div className="flex flex-wrap justify-center gap-4">
+            {topRow.map((card, i) => {
+              const isRevealed = i < revealedCount;
+              return (
+                <div key={i} className="flip-card w-[260px] h-[310px]">
+                  <div className={cn("flip-card-inner relative w-full h-full", isRevealed && "flipped")}>
+                    <div className="flip-card-back absolute inset-0">
+                      <CardBack />
+                    </div>
+                    <div className="flip-card-front absolute inset-0">
+                      <CardFront card={card} />
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+          {/* Bottom row - 2 cards */}
+          <div className="flex flex-wrap justify-center gap-4">
+            {bottomRow.map((card, i) => {
+              const idx = i + 3;
+              const isRevealed = idx < revealedCount;
+              return (
+                <div key={idx} className="flip-card w-[260px] h-[310px]">
+                  <div className={cn("flip-card-inner relative w-full h-full", isRevealed && "flipped")}>
+                    <div className="flip-card-back absolute inset-0">
+                      <CardBack />
+                    </div>
+                    <div className="flip-card-front absolute inset-0">
+                      <CardFront card={card} />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
 
       {phase === "done" && (
-        <div className="text-center mt-8">
+        <div className="flex items-center justify-center gap-3 mt-8">
+          <button
+            onClick={handleSharePull}
+            disabled={copying}
+            className="flex items-center gap-1.5 bg-secondary text-secondary-foreground px-4 py-2.5 rounded-lg font-medium text-sm hover:bg-secondary/80 transition-colors disabled:opacity-50"
+          >
+            <Share2 className="w-4 h-4" />
+            {copying ? "Copying..." : "Share Pull"}
+          </button>
           <button
             onClick={() => { setPhase("idle"); setPulled([]); setRevealedCount(0); }}
             className="bg-primary text-primary-foreground px-6 py-2.5 rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors"
