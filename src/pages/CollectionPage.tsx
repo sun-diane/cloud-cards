@@ -84,8 +84,8 @@ export default function CollectionPage() {
           <h1 className="text-3xl font-extrabold">Collection</h1>
           <p className="text-sm text-muted-foreground">{totalOwned} / {cards.length} cards collected</p>
         </div>
-        <button onClick={handleShareCollection} className="flex items-center gap-1.5 bg-accent text-accent-foreground px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-accent/80 transition-colors">
-          <Share2 className="w-4 h-4" /> Share Collection
+        <button onClick={handleShareCollection} disabled={sharing} className="flex items-center gap-1.5 bg-accent text-accent-foreground px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-accent/80 transition-colors disabled:opacity-50">
+          <Share2 className="w-4 h-4" /> {sharing ? "Capturing…" : "Share Collection"}
         </button>
       </div>
 
