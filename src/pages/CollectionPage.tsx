@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Search, Download, Upload, RotateCcw, X, Share2 } from "lucide-react";
 import { toPng } from "html-to-image";
 import { toast } from "sonner";
+import Papa from "papaparse";
 
 const RARITIES = ["Common", "Uncommon", "Rare", "Ultra Rare", "Legendary"];
 
