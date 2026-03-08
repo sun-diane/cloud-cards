@@ -139,10 +139,10 @@ export default function OpenPacksPage() {
           {pulled.map((card, i) => {
             const isRevealed = i < revealedCount;
             return (
-              <div key={i} className="flip-card">
-                <div className={cn("flip-card-inner relative", isRevealed && "flipped")}>
+              <div key={i} className="flip-card w-[260px] h-[310px]">
+                <div className={cn("flip-card-inner relative w-full h-full", isRevealed && "flipped")}>
                   {/* Back face */}
-                  <div className="flip-card-back">
+                  <div className="flip-card-back absolute inset-0">
                     <CardBack />
                   </div>
                   {/* Front face */}

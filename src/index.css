@@ -115,29 +115,8 @@
     border: 3px solid hsl(var(--rarity-ultra));
   }
   .card-border-legendary {
-    border: 3px solid transparent;
-    background-clip: padding-box;
+    border: 3px solid hsl(var(--accent));
     position: relative;
-  }
-  .card-border-legendary::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: inherit;
-    padding: 3px;
-    background: linear-gradient(
-      135deg,
-      hsl(0 85% 55% / 0.2),
-      hsl(45 95% 55% / 0.2),
-      hsl(210 80% 55% / 0.2)
-    );
-    background-size: 300% 300%;
-    animation: rainbow-border 4s linear infinite;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    z-index: 0;
-    pointer-events: none;
   }
 
   .holo-shimmer {
