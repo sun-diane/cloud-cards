@@ -39,7 +39,7 @@ export default function CardFront({ card, count, large, onClick }: CardFrontProp
         "relative flex flex-col bg-card rounded-xl overflow-hidden card-shadow cursor-pointer transition-transform hover:scale-[1.02]",
         rarityBorder[card.rarity] || "card-border-common",
         isLegendary && "holo-shimmer",
-        large ? "w-[340px] h-[460px]" : "w-[260px] h-[380px]"
+        large ? "w-[340px] h-[380px]" : "w-[260px] h-[310px]"
       )}
     >
       {/* Header */}
