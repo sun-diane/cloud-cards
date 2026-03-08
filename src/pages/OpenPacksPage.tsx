@@ -210,7 +210,7 @@ export default function OpenPacksPage() {
           <button
             onClick={handleSharePull}
             disabled={copying}
-            className="flex items-center gap-1.5 bg-secondary text-secondary-foreground px-4 py-2.5 rounded-lg font-medium text-sm hover:bg-secondary/80 transition-colors disabled:opacity-50"
+            className="flex items-center gap-1.5 bg-accent text-accent-foreground px-4 py-2.5 rounded-lg font-medium text-sm hover:bg-accent/80 transition-colors disabled:opacity-50"
           >
             <Share2 className="w-4 h-4" />
             {copying ? "Copying..." : "Share Pull"}
