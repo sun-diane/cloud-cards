@@ -62,8 +62,14 @@ export default function CollectionPage() {
   const handleShareCollection = async () => {
     if (!collectionRef.current || sharing) return;
     setSharing(true);
+    const el = collectionRef.current;
+    const prevStyle = el.style.cssText;
     try {
-      const dataUrl = await toPng(collectionRef.current, { backgroundColor: "#ffffff" });
+      // Force 4-column layout for the capture
+      el.style.gridTemplateColumns = "repeat(4, 1fr)";
+      el.style.width = "1200px";
+      const dataUrl = await toPng(el, { backgroundColor: "#ffffff" });
+      el.style.cssText = prevStyle;
       const res = await fetch(dataUrl);
       const blob = await res.blob();
       await navigator.clipboard.write([
@@ -71,6 +77,7 @@ export default function CollectionPage() {
       ]);
       toast.success("Collection copied to clipboard!");
     } catch {
+      el.style.cssText = prevStyle;
       toast.error("Failed to copy collection image.");
     } finally {
       setSharing(false);
