@@ -15,7 +15,7 @@ export default function AdModal({ onClose, onComplete }: AdModalProps) {
     const id = setInterval(() => {
       setSeconds((s) => {
         const next = s + 1;
-        if (next >= 60) setCanClaim(true);
+        if (next >= 30) setCanClaim(true);
         return next;
       });
     }, 1000);
@@ -39,7 +39,7 @@ export default function AdModal({ onClose, onComplete }: AdModalProps) {
         </div>
         <div className="flex items-center justify-between mt-4">
           <span className="text-sm text-muted-foreground">
-            {canClaim ? "Ready to claim!" : `Watch for ${60 - seconds}s more...`}
+            {canClaim ? "Ready to claim!" : `Watch for ${30 - seconds}s more...`}
           </span>
           <button
             disabled={!canClaim}

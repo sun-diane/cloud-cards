@@ -75,8 +75,16 @@ export default function OpenPacksPage() {
             <span className="text-muted-foreground"> / 6</span>
           </div>
           {nextRefillMs > 0 && (
-            <div className="text-muted-foreground">
-              Next pack in <span className="font-mono font-medium text-foreground">{formatTime(nextRefillMs)}</span>
+            <div className="flex items-center gap-3 text-muted-foreground">
+              <span>Next pack in <span className="font-mono font-medium text-foreground">{formatTime(nextRefillMs)}</span></span>
+              {packsAvailable === 0 && (
+                <button
+                  onClick={() => setShowAd(true)}
+                  className="bg-accent text-accent-foreground px-3 py-1.5 rounded-lg font-bold text-xs hover:bg-accent/90 transition-colors"
+                >
+                  🎬 Watch ad
+                </button>
+              )}
             </div>
           )}
         </div>
@@ -109,12 +117,6 @@ export default function OpenPacksPage() {
                 className="w-56 rounded-xl card-shadow opacity-50 grayscale"
               />
               <p className="text-muted-foreground text-sm">No packs available</p>
-              <button
-                onClick={() => setShowAd(true)}
-                className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-bold text-sm hover:bg-accent/90 transition-colors"
-              >
-                🎬 Watch ad to get a pack
-              </button>
             </div>
           )}
         </div>
