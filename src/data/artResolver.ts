@@ -1,16 +1,26 @@
 import type { CardData } from "./types";
 
-const faviconExts = ["png", "svg"];
+const faviconExts = ["png", "jpg", "jpeg", "webp", "svg"];
 const imageExts = ["jpg", "jpeg", "png", "webp"];
 
-// We can't do runtime file existence checks in a static build,
-// so we just return the first extension and rely on onError fallback in img tags.
+function getExts(card: CardData): string[] {
+  return card.artType === "image" ? imageExts : faviconExts;
+}
+
+export function getArtAttemptCount(card: CardData): number {
+  return getExts(card).length;
+}
+
+export function getArtSrcForAttempt(card: CardData, attempt: number): string {
+  const exts = getExts(card);
+  const safeAttempt = Math.min(Math.max(attempt, 0), exts.length - 1);
+  const ext = exts[safeAttempt];
+  const folder = card.artType === "image" ? "art" : "icons";
+  return `/${folder}/${card.artKey}.${ext}`;
+}
+
 export function getArtSrc(card: CardData): string {
-  if (card.artType === "image") {
-    return `/art/${card.artKey}.${imageExts[0]}`;
-  }
-  // Icons are now full PNGs
-  return `/icons/${card.artKey}.${faviconExts[0]}`;
+  return getArtSrcForAttempt(card, 0);
 }
 
 export function getPlaceholder(card: CardData): string {
