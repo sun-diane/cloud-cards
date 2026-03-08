@@ -62,7 +62,7 @@ export default function CollectionPage() {
             countsByCardId[row.cardId] = Number(row.count) || 0;
           }
         }
-        importCollection({ appVersion: "1.0.0", exportedAt: "", countsByCardId }, merge);
+        importCollection({ appVersion: "1.0.0", exportedAt: "", countsByCardId, packsState: { packsAvailable: state.packsAvailable, lastRefillEpochMs: state.lastRefillEpochMs } }, merge);
       } catch { alert("Invalid CSV file"); }
     };
     reader.readAsText(file);
