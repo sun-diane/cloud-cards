@@ -30,7 +30,6 @@ interface CardFrontProps {
 export default function CardFront({ card, count, large, owned = true, onClick }: CardFrontProps) {
   const [imgError, setImgError] = useState(false);
   const artSrc = imgError ? getPlaceholder(card) : getArtSrc(card);
-  const isFullBleed = card.artType === "image";
   const isLegendary = card.rarity === "Legendary";
   const isUltraRare = card.rarity === "Ultra Rare";
 
