@@ -15,6 +15,7 @@ export default function CollectionPage() {
   const [rarityFilter, setRarityFilter] = useState<string | null>(null);
   const [classFilter, setClassFilter] = useState<string | null>(null);
   const [selectedCard, setSelectedCard] = useState<CardData | null>(null);
+  const [sharing, setSharing] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
   const collectionRef = useRef<HTMLDivElement>(null);
 
@@ -59,7 +60,8 @@ export default function CollectionPage() {
   };
 
   const handleShareCollection = async () => {
-    if (!collectionRef.current) return;
+    if (!collectionRef.current || sharing) return;
+    setSharing(true);
     try {
       const dataUrl = await toPng(collectionRef.current, { backgroundColor: "#1a1a2e" });
       const res = await fetch(dataUrl);
@@ -70,6 +72,8 @@ export default function CollectionPage() {
       toast.success("Collection copied to clipboard!");
     } catch {
       toast.error("Failed to copy collection image.");
+    } finally {
+      setSharing(false);
     }
   };
 
@@ -80,8 +84,8 @@ export default function CollectionPage() {
           <h1 className="text-3xl font-extrabold">Collection</h1>
           <p className="text-sm text-muted-foreground">{totalOwned} / {cards.length} cards collected</p>
         </div>
-        <button onClick={handleShareCollection} className="flex items-center gap-1.5 bg-accent text-accent-foreground px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-accent/80 transition-colors">
-          <Share2 className="w-4 h-4" /> Share Collection
+        <button onClick={handleShareCollection} disabled={sharing} className="flex items-center gap-1.5 bg-accent text-accent-foreground px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-accent/80 transition-colors disabled:opacity-50">
+          <Share2 className="w-4 h-4" /> {sharing ? "Capturing…" : "Share Collection"}
         </button>
       </div>
 
