@@ -128,17 +128,17 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(
-      125deg,
+      135deg,
       transparent 0%,
-      hsla(0, 80%, 60%, 0.1) 15%,
-      hsla(45, 90%, 55%, 0.12) 30%,
-      transparent 45%,
-      hsla(180, 70%, 50%, 0.1) 60%,
-      hsla(270, 60%, 55%, 0.12) 75%,
-      transparent 100%
+      hsla(0, 80%, 60%, 0.12) 12%,
+      hsla(45, 90%, 55%, 0.14) 25%,
+      transparent 40%,
+      hsla(180, 70%, 50%, 0.12) 55%,
+      hsla(270, 60%, 55%, 0.14) 70%,
+      transparent 85%
     );
-    background-size: 200% 200%;
-    animation: holo-move 3s ease-in-out infinite;
+    background-size: 300% 300%;
+    animation: holo-move 4s ease-in-out infinite;
     pointer-events: none;
     border-radius: inherit;
     z-index: 2;
@@ -155,17 +155,15 @@
     background: linear-gradient(
       135deg,
       transparent 0%,
-      hsla(0, 0%, 75%, 0.7) 10%,
-      hsla(220, 10%, 70%, 0.8) 20%,
-      hsla(0, 0%, 80%, 0.9) 30%,
+      hsla(0, 0%, 78%, 0.45) 12%,
+      hsla(220, 8%, 74%, 0.5) 25%,
       transparent 40%,
-      hsla(200, 10%, 72%, 0.7) 50%,
-      hsla(0, 0%, 78%, 0.85) 60%,
-      hsla(240, 10%, 70%, 0.8) 70%,
-      transparent 82%
+      hsla(200, 8%, 76%, 0.45) 55%,
+      hsla(240, 8%, 74%, 0.5) 70%,
+      transparent 85%
     );
-    background-size: 250% 250%;
-    animation: ultra-move 4s linear infinite;
+    background-size: 300% 300%;
+    animation: ultra-move 6s linear infinite;
     pointer-events: none;
     border-radius: inherit;
     z-index: 2;
@@ -198,12 +196,13 @@
 }
 
 @keyframes holo-move {
-  0% { background-position: 200% 0%; }
-  50% { background-position: 0% 200%; }
-  100% { background-position: 200% 0%; }
+  0% { background-position: 0% 0%; }
+  50% { background-position: 300% 300%; }
+  100% { background-position: 0% 0%; }
 }
 
 @keyframes ultra-move {
   0% { background-position: 0% 0%; }
-  100% { background-position: 250% 250%; }
+  50% { background-position: 300% 300%; }
+  100% { background-position: 0% 0%; }
 }
