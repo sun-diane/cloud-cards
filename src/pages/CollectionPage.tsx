@@ -63,7 +63,7 @@ export default function CollectionPage() {
     if (!collectionRef.current || sharing) return;
     setSharing(true);
     try {
-      const dataUrl = await toPng(collectionRef.current, { backgroundColor: "#1a1a2e" });
+      const dataUrl = await toPng(collectionRef.current, { backgroundColor: "#ffffff" });
       const res = await fetch(dataUrl);
       const blob = await res.blob();
       await navigator.clipboard.write([
