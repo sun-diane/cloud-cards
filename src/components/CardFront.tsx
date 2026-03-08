@@ -60,7 +60,8 @@ export default function CardFront({ card, count, large, owned = true, onClick }:
 
       {/* Art area */}
       <div className={cn(
-        "relative overflow-hidden bg-muted flex items-center justify-center",
+        "relative overflow-hidden flex items-center justify-center",
+        card.artType === "favicon" ? "bg-muted/60" : "bg-muted",
         large ? "h-[200px]" : "h-[140px]",
         isUltraRare || isLegendary
           ? "mx-0 my-0 rounded-none"
@@ -70,7 +71,12 @@ export default function CardFront({ card, count, large, owned = true, onClick }:
           src={artSrc}
           alt={card.name}
           onError={handleImgError}
-          className="w-full h-full object-cover"
+          className={cn(
+            "w-full h-full",
+            card.artType === "favicon"
+              ? "object-contain p-[10%]"
+              : "object-cover"
+          )}
         />
       </div>
 
