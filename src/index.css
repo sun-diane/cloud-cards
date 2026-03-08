@@ -197,12 +197,10 @@
 
 @keyframes holo-move {
   0% { background-position: 0% 0%; }
-  50% { background-position: 300% 300%; }
-  100% { background-position: 0% 0%; }
+  100% { background-position: 300% 300%; }
 }
 
 @keyframes ultra-move {
   0% { background-position: 0% 0%; }
-  50% { background-position: 300% 300%; }
-  100% { background-position: 0% 0%; }
+  100% { background-position: 300% 300%; }
 }
