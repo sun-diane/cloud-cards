@@ -43,7 +43,10 @@ export default function CardFront({ card, count, large, onClick }: CardFrontProp
       )}
     >
       {/* Header */}
-      <div className="flex items-center justify-between px-4 pt-3 pb-1 relative z-10">
+      <div className={cn(
+        "flex items-center justify-between px-4 pt-3 pb-1 relative z-10",
+        count !== undefined && "pl-11"
+      )}>
         <h3 className={cn("font-bold truncate pr-2", large ? "text-base" : "text-sm")}>
           {card.name}
         </h3>
