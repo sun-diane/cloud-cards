@@ -1,4 +1,4 @@
-import { getArtAttemptCount, getArtSrcForAttempt, getPlaceholder } from "@/data/artResolver";
+import { getArtSrc, getPlaceholder } from "@/data/artResolver";
 import type { CardData } from "@/data/types";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
