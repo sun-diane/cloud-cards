@@ -138,7 +138,7 @@
       transparent 85%
     );
     background-size: 300% 300%;
-    animation: holo-move 4s ease-in-out infinite;
+    animation: holo-move 14s linear infinite;
     pointer-events: none;
     border-radius: inherit;
     z-index: 2;
@@ -163,7 +163,7 @@
       transparent 85%
     );
     background-size: 300% 300%;
-    animation: ultra-move 6s linear infinite;
+    animation: ultra-move 18s linear infinite;
     pointer-events: none;
     border-radius: inherit;
     z-index: 2;
@@ -197,12 +197,10 @@
 
 @keyframes holo-move {
   0% { background-position: 0% 0%; }
-  50% { background-position: 300% 300%; }
-  100% { background-position: 0% 0%; }
+  100% { background-position: 300% 300%; }
 }
 
 @keyframes ultra-move {
   0% { background-position: 0% 0%; }
-  50% { background-position: 300% 300%; }
-  100% { background-position: 0% 0%; }
+  100% { background-position: 300% 300%; }
 }
