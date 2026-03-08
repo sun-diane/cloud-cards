@@ -165,13 +165,13 @@ export default function CollectionPage() {
       )}
 
       {/* Manage Collection */}
-      <div className="mt-12 border-t border-border pt-6">
+      <div className="mt-12 border-t border-border pt-6 flex flex-col items-center text-center">
         <h2 className="text-lg font-bold mb-4">Manage Collection</h2>
-        <div className="flex gap-2 flex-wrap">
+        <div className="flex gap-2 flex-wrap justify-center">
           <button onClick={handleExport} className="flex items-center gap-1.5 bg-primary text-primary-foreground px-3 py-2 rounded-lg text-sm font-medium hover:bg-primary/90">
             <Download className="w-4 h-4" /> Export
           </button>
-          <input ref={fileRef} type="file" accept=".json" className="hidden" onChange={() => handleImport(false)} />
+          <input ref={fileRef} type="file" accept=".csv" className="hidden" onChange={() => handleImport(false)} />
           <button onClick={() => fileRef.current?.click()} className="flex items-center gap-1.5 bg-secondary text-secondary-foreground px-3 py-2 rounded-lg text-sm font-medium hover:bg-secondary/80">
             <Upload className="w-4 h-4" /> Import
           </button>
