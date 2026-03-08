@@ -3,7 +3,9 @@ import { useGame } from "@/context/GameContext";
 import CardFront from "@/components/CardFront";
 import type { CardData } from "@/data/types";
 import { cn } from "@/lib/utils";
-import { Search, Download, Upload, RotateCcw, X } from "lucide-react";
+import { Search, Download, Upload, RotateCcw, X, Share2 } from "lucide-react";
+import { toPng } from "html-to-image";
+import { toast } from "sonner";
 
 const RARITIES = ["Common", "Uncommon", "Rare", "Ultra Rare", "Legendary"];
 
@@ -14,6 +16,7 @@ export default function CollectionPage() {
   const [classFilter, setClassFilter] = useState<string | null>(null);
   const [selectedCard, setSelectedCard] = useState<CardData | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
+  const collectionRef = useRef<HTMLDivElement>(null);
 
   const classes = useMemo(() => [...new Set(cards.map((c) => c.class))].sort(), [cards]);
 
@@ -55,6 +58,21 @@ export default function CollectionPage() {
     if (fileRef.current) fileRef.current.value = "";
   };
 
+  const handleShareCollection = async () => {
+    if (!collectionRef.current) return;
+    try {
+      const dataUrl = await toPng(collectionRef.current, { backgroundColor: "#1a1a2e" });
+      const res = await fetch(dataUrl);
+      const blob = await res.blob();
+      await navigator.clipboard.write([
+        new ClipboardItem({ "image/png": blob }),
+      ]);
+      toast.success("Collection copied to clipboard!");
+    } catch {
+      toast.error("Failed to copy collection image.");
+    }
+  };
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
@@ -62,18 +80,9 @@ export default function CollectionPage() {
           <h1 className="text-3xl font-extrabold">Collection</h1>
           <p className="text-sm text-muted-foreground">{totalOwned} / {cards.length} cards collected</p>
         </div>
-        <div className="flex gap-2 flex-wrap">
-          <button onClick={handleExport} className="flex items-center gap-1.5 bg-primary text-primary-foreground px-3 py-2 rounded-lg text-sm font-medium hover:bg-primary/90">
-            <Download className="w-4 h-4" /> Export
-          </button>
-          <input ref={fileRef} type="file" accept=".json" className="hidden" onChange={() => handleImport(false)} />
-          <button onClick={() => fileRef.current?.click()} className="flex items-center gap-1.5 bg-secondary text-secondary-foreground px-3 py-2 rounded-lg text-sm font-medium hover:bg-secondary/80">
-            <Upload className="w-4 h-4" /> Import
-          </button>
-          <button onClick={() => { if (confirm("Reset all progress?")) resetCollection(); }} className="flex items-center gap-1.5 bg-destructive text-destructive-foreground px-3 py-2 rounded-lg text-sm font-medium hover:bg-destructive/90">
-            <RotateCcw className="w-4 h-4" /> Reset
-          </button>
-        </div>
+        <button onClick={handleShareCollection} className="flex items-center gap-1.5 bg-primary text-primary-foreground px-3 py-2 rounded-lg text-sm font-medium hover:bg-primary/90">
+          <Share2 className="w-4 h-4" /> Share Collection
+        </button>
       </div>
 
       {/* Filters */}
@@ -106,7 +115,7 @@ export default function CollectionPage() {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-items-center">
+      <div ref={collectionRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-items-center p-2">
         {filtered.map((card) => {
           const count = state.countsByCardId[card.id] || 0;
           return (
@@ -133,6 +142,23 @@ export default function CollectionPage() {
       {filtered.length === 0 && (
         <p className="text-center text-muted-foreground py-20">No cards match your filters.</p>
       )}
+
+      {/* Manage Collection */}
+      <div className="mt-12 border-t border-border pt-6">
+        <h2 className="text-lg font-bold mb-4">Manage Collection</h2>
+        <div className="flex gap-2 flex-wrap">
+          <button onClick={handleExport} className="flex items-center gap-1.5 bg-primary text-primary-foreground px-3 py-2 rounded-lg text-sm font-medium hover:bg-primary/90">
+            <Download className="w-4 h-4" /> Export
+          </button>
+          <input ref={fileRef} type="file" accept=".json" className="hidden" onChange={() => handleImport(false)} />
+          <button onClick={() => fileRef.current?.click()} className="flex items-center gap-1.5 bg-secondary text-secondary-foreground px-3 py-2 rounded-lg text-sm font-medium hover:bg-secondary/80">
+            <Upload className="w-4 h-4" /> Import
+          </button>
+          <button onClick={() => { if (confirm("Reset all progress?")) resetCollection(); }} className="flex items-center gap-1.5 bg-destructive text-destructive-foreground px-3 py-2 rounded-lg text-sm font-medium hover:bg-destructive/90">
+            <RotateCcw className="w-4 h-4" /> Reset
+          </button>
+        </div>
+      </div>
 
       {/* Detail modal */}
       {selectedCard && (
