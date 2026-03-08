@@ -163,7 +163,7 @@
       transparent 85%
     );
     background-size: 300% 300%;
-    animation: ultra-move 6s linear infinite;
+    animation: ultra-move 18s linear infinite;
     pointer-events: none;
     border-radius: inherit;
     z-index: 2;
