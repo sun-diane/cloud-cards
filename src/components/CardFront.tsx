@@ -1,4 +1,4 @@
-import { getArtSrc, getPlaceholder } from "@/data/artResolver";
+import { getArtAttemptCount, getArtSrcForAttempt, getPlaceholder } from "@/data/artResolver";
 import type { CardData } from "@/data/types";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
@@ -29,15 +29,23 @@ interface CardFrontProps {
 
 export default function CardFront({ card, count, large, owned = true, onClick }: CardFrontProps) {
   const [imgError, setImgError] = useState(false);
-  const artSrc = imgError ? getPlaceholder(card) : getArtSrc(card);
+  const [artAttempt, setArtAttempt] = useState(0);
+  const artSrc = imgError ? getPlaceholder(card) : getArtSrcForAttempt(card, artAttempt);
   const isLegendary = card.rarity === "Legendary";
   const isUltraRare = card.rarity === "Ultra Rare";
 
   useEffect(() => {
     setImgError(false);
+    setArtAttempt(0);
   }, [card.artKey, card.artType]);
 
   const handleImgError = () => {
+    if (imgError) return;
+    const maxAttempts = getArtAttemptCount(card);
+    if (artAttempt < maxAttempts - 1) {
+      setArtAttempt((prev) => prev + 1);
+      return;
+    }
     setImgError(true);
   };
 
