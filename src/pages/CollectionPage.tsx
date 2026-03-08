@@ -37,11 +37,13 @@ export default function CollectionPage() {
 
   const handleExport = () => {
     const data = exportCollection();
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    const rows = Object.entries(data.countsByCardId).map(([cardId, count]) => ({ cardId, count }));
+    const csv = Papa.unparse(rows);
+    const blob = new Blob([csv], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `cloud-cards-export-${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `cloud-cards-export-${new Date().toISOString().slice(0, 10)}.csv`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -52,9 +54,16 @@ export default function CollectionPage() {
     const reader = new FileReader();
     reader.onload = (e) => {
       try {
-        const data = JSON.parse(e.target?.result as string);
-        importCollection(data, merge);
-      } catch { alert("Invalid JSON file"); }
+        const text = e.target?.result as string;
+        const result = Papa.parse(text, { header: true, skipEmptyLines: true });
+        const countsByCardId: Record<string, number> = {};
+        for (const row of result.data as Record<string, string>[]) {
+          if (row.cardId && row.count) {
+            countsByCardId[row.cardId] = Number(row.count) || 0;
+          }
+        }
+        importCollection({ appVersion: "1.0.0", exportedAt: "", countsByCardId }, merge);
+      } catch { alert("Invalid CSV file"); }
     };
     reader.readAsText(file);
     if (fileRef.current) fileRef.current.value = "";
