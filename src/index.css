@@ -138,7 +138,7 @@
       transparent 100%
     );
     background-size: 200% 100%;
-    animation: holo-move 10s linear infinite;
+    animation: holo-move 4s linear infinite;
     pointer-events: none;
     border-radius: inherit;
     z-index: 2;
