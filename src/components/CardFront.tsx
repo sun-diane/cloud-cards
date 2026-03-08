@@ -98,7 +98,7 @@ export default function CardFront({ card, count, large, onClick }: CardFrontProp
       {/* Count badge */}
       {count !== undefined && (
         <div className={cn(
-          "absolute -top-1 -left-1 z-20 rounded-full px-1.5 py-0.5 text-[10px] font-bold leading-none",
+          "absolute top-1 left-1 z-20 rounded-full px-1.5 py-0.5 text-[10px] font-bold leading-none shadow-sm",
           count > 0 ? "bg-accent text-accent-foreground" : "bg-muted text-muted-foreground"
         )}>
           ×{count}
