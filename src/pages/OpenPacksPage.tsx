@@ -117,12 +117,6 @@ export default function OpenPacksPage() {
                 className="w-56 rounded-xl card-shadow opacity-50 grayscale"
               />
               <p className="text-muted-foreground text-sm">No packs available</p>
-              <button
-                onClick={() => setShowAd(true)}
-                className="bg-accent text-accent-foreground px-6 py-3 rounded-lg font-bold text-sm hover:bg-accent/90 transition-colors"
-              >
-                🎬 Watch ad to get a pack
-              </button>
             </div>
           )}
         </div>

@@ -86,7 +86,7 @@ export default function CardFront({ card, count, large, onClick }: CardFrontProp
 
       {/* Flavor */}
       <p className={cn(
-        "px-4 pb-3 text-muted-foreground leading-snug relative z-10 mt-auto",
+        "px-4 pb-3 text-muted-foreground leading-snug relative z-10",
         large ? "text-xs" : "text-[11px]"
       )}>
         {card.flavor}
