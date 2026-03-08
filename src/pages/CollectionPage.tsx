@@ -15,6 +15,7 @@ export default function CollectionPage() {
   const [rarityFilter, setRarityFilter] = useState<string | null>(null);
   const [classFilter, setClassFilter] = useState<string | null>(null);
   const [selectedCard, setSelectedCard] = useState<CardData | null>(null);
+  const [sharing, setSharing] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
   const collectionRef = useRef<HTMLDivElement>(null);
 
