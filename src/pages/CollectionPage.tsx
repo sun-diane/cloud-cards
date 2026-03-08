@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Search, Download, Upload, RotateCcw, X, Share2 } from "lucide-react";
 import { toPng } from "html-to-image";
 import { toast } from "sonner";
+import Papa from "papaparse";
 
 const RARITIES = ["Common", "Uncommon", "Rare", "Ultra Rare", "Legendary"];
 
@@ -36,11 +37,13 @@ export default function CollectionPage() {
 
   const handleExport = () => {
     const data = exportCollection();
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    const rows = Object.entries(data.countsByCardId).map(([cardId, count]) => ({ cardId, count }));
+    const csv = Papa.unparse(rows);
+    const blob = new Blob([csv], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `cloud-cards-export-${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `cloud-cards-export-${new Date().toISOString().slice(0, 10)}.csv`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -51,9 +54,16 @@ export default function CollectionPage() {
     const reader = new FileReader();
     reader.onload = (e) => {
       try {
-        const data = JSON.parse(e.target?.result as string);
-        importCollection(data, merge);
-      } catch { alert("Invalid JSON file"); }
+        const text = e.target?.result as string;
+        const result = Papa.parse(text, { header: true, skipEmptyLines: true });
+        const countsByCardId: Record<string, number> = {};
+        for (const row of result.data as Record<string, string>[]) {
+          if (row.cardId && row.count) {
+            countsByCardId[row.cardId] = Number(row.count) || 0;
+          }
+        }
+        importCollection({ appVersion: "1.0.0", exportedAt: "", countsByCardId, packsState: { packsAvailable: state.packsAvailable, lastRefillEpochMs: state.lastRefillEpochMs } }, merge);
+      } catch { alert("Invalid CSV file"); }
     };
     reader.readAsText(file);
     if (fileRef.current) fileRef.current.value = "";
@@ -155,13 +165,13 @@ export default function CollectionPage() {
       )}
 
       {/* Manage Collection */}
-      <div className="mt-12 border-t border-border pt-6">
+      <div className="mt-12 border-t border-border pt-6 flex flex-col items-center text-center">
         <h2 className="text-lg font-bold mb-4">Manage Collection</h2>
-        <div className="flex gap-2 flex-wrap">
+        <div className="flex gap-2 flex-wrap justify-center">
           <button onClick={handleExport} className="flex items-center gap-1.5 bg-primary text-primary-foreground px-3 py-2 rounded-lg text-sm font-medium hover:bg-primary/90">
             <Download className="w-4 h-4" /> Export
           </button>
-          <input ref={fileRef} type="file" accept=".json" className="hidden" onChange={() => handleImport(false)} />
+          <input ref={fileRef} type="file" accept=".csv" className="hidden" onChange={() => handleImport(false)} />
           <button onClick={() => fileRef.current?.click()} className="flex items-center gap-1.5 bg-secondary text-secondary-foreground px-3 py-2 rounded-lg text-sm font-medium hover:bg-secondary/80">
             <Upload className="w-4 h-4" /> Import
           </button>
