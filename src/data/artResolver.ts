@@ -1,6 +1,6 @@
 import type { CardData } from "./types";
 
-const faviconExts = ["svg", "png"];
+const faviconExts = ["png", "svg"];
 const imageExts = ["jpg", "jpeg", "png", "webp"];
 
 // We can't do runtime file existence checks in a static build,
