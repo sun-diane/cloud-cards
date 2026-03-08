@@ -43,7 +43,10 @@ export default function CardFront({ card, count, large, onClick }: CardFrontProp
       )}
     >
       {/* Header */}
-      <div className="flex items-center justify-between px-4 pt-3 pb-1 relative z-10">
+      <div className={cn(
+        "flex items-center justify-between px-4 pt-3 pb-1 relative z-10",
+        count !== undefined && "pl-11"
+      )}>
         <h3 className={cn("font-bold truncate pr-2", large ? "text-base" : "text-sm")}>
           {card.name}
         </h3>
@@ -95,7 +98,7 @@ export default function CardFront({ card, count, large, onClick }: CardFrontProp
       {/* Count badge */}
       {count !== undefined && (
         <div className={cn(
-          "absolute -top-1 -left-1 z-20 rounded-full px-1.5 py-0.5 text-[10px] font-bold leading-none",
+          "absolute top-1 left-1 z-20 rounded-full px-1.5 py-0.5 text-[10px] font-bold leading-none shadow-sm",
           count > 0 ? "bg-accent text-accent-foreground" : "bg-muted text-muted-foreground"
         )}>
           ×{count}
