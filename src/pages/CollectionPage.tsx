@@ -60,7 +60,8 @@ export default function CollectionPage() {
   };
 
   const handleShareCollection = async () => {
-    if (!collectionRef.current) return;
+    if (!collectionRef.current || sharing) return;
+    setSharing(true);
     try {
       const dataUrl = await toPng(collectionRef.current, { backgroundColor: "#1a1a2e" });
       const res = await fetch(dataUrl);
@@ -71,6 +72,8 @@ export default function CollectionPage() {
       toast.success("Collection copied to clipboard!");
     } catch {
       toast.error("Failed to copy collection image.");
+    } finally {
+      setSharing(false);
     }
   };
 
