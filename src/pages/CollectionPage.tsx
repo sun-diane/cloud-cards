@@ -112,13 +112,18 @@ export default function CollectionPage() {
           return (
             <div
               key={card.id}
-              className={cn("transition-all", count === 0 && "grayscale opacity-50")}
+              className={cn("flex flex-col items-center transition-all", count === 0 && "grayscale opacity-50")}
             >
               <CardFront
                 card={card}
-                count={count}
                 onClick={() => setSelectedCard(card)}
               />
+              <span className={cn(
+                "mt-2 text-sm font-bold rounded-full px-3 py-0.5",
+                count > 0 ? "bg-accent text-accent-foreground" : "bg-muted text-muted-foreground"
+              )}>
+                ×{count}
+              </span>
             </div>
           );
         })}

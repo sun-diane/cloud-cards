@@ -39,14 +39,11 @@ export default function CardFront({ card, count, large, onClick }: CardFrontProp
         "relative flex flex-col bg-card rounded-xl overflow-hidden card-shadow cursor-pointer transition-transform hover:scale-[1.02]",
         rarityBorder[card.rarity] || "card-border-common",
         isLegendary && "holo-shimmer",
-        large ? "w-[340px]" : "w-[260px]"
+        large ? "w-[340px] h-[460px]" : "w-[260px] h-[380px]"
       )}
     >
       {/* Header */}
-      <div className={cn(
-        "flex items-center justify-between px-4 pt-3 pb-1 relative z-10",
-        count !== undefined && "pl-11"
-      )}>
+      <div className="flex items-center justify-between px-4 pt-3 pb-1 relative z-10">
         <h3 className={cn("font-bold truncate pr-2", large ? "text-base" : "text-sm")}>
           {card.name}
         </h3>
@@ -89,21 +86,11 @@ export default function CardFront({ card, count, large, onClick }: CardFrontProp
 
       {/* Flavor */}
       <p className={cn(
-        "px-4 pb-3 text-muted-foreground leading-snug relative z-10",
+        "px-4 pb-3 text-muted-foreground leading-snug relative z-10 mt-auto",
         large ? "text-xs" : "text-[11px]"
       )}>
         {card.flavor}
       </p>
-
-      {/* Count badge */}
-      {count !== undefined && (
-        <div className={cn(
-          "absolute top-1 left-1 z-20 rounded-full px-1.5 py-0.5 text-[10px] font-bold leading-none shadow-sm",
-          count > 0 ? "bg-accent text-accent-foreground" : "bg-muted text-muted-foreground"
-        )}>
-          ×{count}
-        </div>
-      )}
     </div>
   );
 }
