@@ -15,7 +15,7 @@ export default function AdModal({ onClose, onComplete }: AdModalProps) {
     const id = setInterval(() => {
       setSeconds((s) => {
         const next = s + 1;
-        if (next >= 60) setCanClaim(true);
+        if (next >= 30) setCanClaim(true);
         return next;
       });
     }, 1000);
