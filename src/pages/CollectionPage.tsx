@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useCallback, memo } from "react";
 import { useGame } from "@/context/GameContext";
 import CardFront from "@/components/CardFront";
 import CardBack from "@/components/CardBack";
@@ -11,6 +11,28 @@ import Papa from "papaparse";
 
 const RARITIES = ["Common", "Uncommon", "Rare", "Ultra Rare", "Legendary"];
 
+const CollectionCard = memo(({ card, count, onSelect }: { card: CardData; count: number; onSelect: (card: CardData) => void }) => {
+  const owned = count > 0;
+  return (
+    <div
+      className="flex flex-col items-center"
+      onClick={() => onSelect(card)}
+    >
+      {owned ? (
+        <CardFront card={card} owned />
+      ) : (
+        <CardBack className="grayscale opacity-50 cursor-pointer" />
+      )}
+      <span className={cn(
+        "mt-2 text-sm font-bold rounded-full px-3 py-0.5",
+        owned ? "bg-secondary text-foreground" : "bg-muted text-muted-foreground"
+      )}>
+        {owned ? `×${count}` : "×0"}
+      </span>
+    </div>
+  );
+});
+
 export default function CollectionPage() {
   const { cards, state, exportCollection, importCollection, resetCollection } = useGame();
   const [search, setSearch] = useState("");
@@ -18,6 +40,7 @@ export default function CollectionPage() {
   const [classFilter, setClassFilter] = useState<string | null>(null);
   const [selectedCard, setSelectedCard] = useState<CardData | null>(null);
   const [sharing, setSharing] = useState(false);
+  const handleSelectCard = useCallback((card: CardData) => setSelectedCard(card), []);
   const fileRef = useRef<HTMLInputElement>(null);
   const collectionRef = useRef<HTMLDivElement>(null);
 
@@ -163,29 +186,14 @@ export default function CollectionPage() {
 
       {/* Grid */}
       <div ref={collectionRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-items-center p-2">
-        {filtered.map((card) => {
-          const count = state.countsByCardId[card.id] || 0;
-          const owned = count > 0;
-          return (
-            <div
-              key={card.id}
-              className="flex flex-col items-center transition-all"
-              onClick={() => setSelectedCard(card)}
-            >
-              {owned ? (
-                <CardFront card={card} owned />
-              ) : (
-                <CardBack className="grayscale opacity-50 cursor-pointer" />
-              )}
-              <span className={cn(
-                "mt-2 text-sm font-bold rounded-full px-3 py-0.5",
-                owned ? "bg-secondary text-foreground" : "bg-muted text-muted-foreground"
-              )}>
-                {owned ? `×${count}` : "×0"}
-              </span>
-            </div>
-          );
-        })}
+        {filtered.map((card) => (
+          <CollectionCard
+            key={card.id}
+            card={card}
+            count={state.countsByCardId[card.id] || 0}
+            onSelect={handleSelectCard}
+          />
+        ))}
       </div>
 
       {filtered.length === 0 && (

@@ -1,7 +1,7 @@
 import { getArtSrc, getPlaceholder } from "@/data/artResolver";
 import type { CardData } from "@/data/types";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, memo } from "react";
 
 const rarityBorder: Record<string, string> = {
   Common: "card-border-common",
@@ -35,7 +35,7 @@ interface CardFrontProps {
   onClick?: () => void;
 }
 
-export default function CardFront({ card, count, large, owned = true, onClick }: CardFrontProps) {
+const CardFront = memo(function CardFront({ card, count, large, owned = true, onClick }: CardFrontProps) {
   const [imgError, setImgError] = useState(false);
   const artSrc = imgError ? getPlaceholder(card) : getArtSrc(card);
   const isLegendary = card.rarity === "Legendary";
@@ -122,4 +122,6 @@ export default function CardFront({ card, count, large, owned = true, onClick }:
       </p>
     </div>
   );
-}
+});
+
+export default CardFront;
