@@ -35,7 +35,7 @@ export default function AppNav() {
           </RouterNavLink>
         ))}
         {/* Battle - disabled */}
-        <div className="relative group">
+        <div className="relative group hidden sm:block">
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium text-muted-foreground/40 cursor-not-allowed select-none">
             <Swords className="w-4 h-4" />
             Battle
