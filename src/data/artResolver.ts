@@ -33,8 +33,9 @@ export function getArtSrcForAttempt(card: CardData, _attempt: number): string {
 }
 
 export function getPlaceholder(card: CardData): string {
+  const base = import.meta.env.BASE_URL;
   if (card.artType === "image") {
-    return "/ui/placeholder-art.jpg";
+    return `${base}ui/placeholder-art.jpg`;
   }
-  return "/ui/placeholder-favicon.svg";
+  return `${base}ui/placeholder-favicon.svg`;
 }
