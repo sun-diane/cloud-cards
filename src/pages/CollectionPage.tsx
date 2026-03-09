@@ -1,6 +1,7 @@
 import { useState, useMemo, useRef } from "react";
 import { useGame } from "@/context/GameContext";
 import CardFront from "@/components/CardFront";
+import CardBack from "@/components/CardBack";
 import type { CardData } from "@/data/types";
 import { cn } from "@/lib/utils";
 import { Search, Download, Upload, RotateCcw, X, Share2 } from "lucide-react";
