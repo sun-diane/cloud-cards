@@ -11,6 +11,14 @@ const rarityBorder: Record<string, string> = {
   Legendary: "card-border-legendary",
 };
 
+const rarityGradientColor: Record<string, string> = {
+  Common: "hsl(220 10% 60%)",
+  Uncommon: "hsl(142 50% 45%)",
+  Rare: "hsl(217 80% 55%)",
+  "Ultra Rare": "hsl(270 60% 55%)",
+  Legendary: "hsl(30 100% 50%)",
+};
+
 const rarityLabel: Record<string, string> = {
   Common: "chip-rarity chip-rarity-common",
   Uncommon: "chip-rarity chip-rarity-uncommon",
