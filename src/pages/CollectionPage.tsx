@@ -208,7 +208,7 @@ export default function CollectionPage() {
               <div className="relative">
                 <CardBack large />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="bg-foreground/70 text-background px-4 py-2 rounded-lg text-sm font-bold">
+                  <span className="bg-black/80 text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-lg">
                     Not collected
                   </span>
                 </div>
