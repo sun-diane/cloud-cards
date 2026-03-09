@@ -29,9 +29,9 @@ export default function AdModal({ onClose, onComplete }: AdModalProps) {
           <h2 className="font-bold text-lg">Watch to earn a pack</h2>
           <button onClick={onClose} className="text-muted-foreground hover:text-foreground text-xl">✕</button>
         </div>
-        <div className="aspect-video rounded-lg overflow-hidden bg-foreground/5">
+        <div className="aspect-video rounded-lg overflow-hidden bg-black">
           <iframe
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`}
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1&modestbranding=1`}
             allow="autoplay; encrypted-media"
             allowFullScreen
             className="w-full h-full border-0"
