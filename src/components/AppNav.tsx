@@ -13,7 +13,7 @@ export default function AppNav() {
     <nav className="sticky top-0 z-50 bg-card/80 backdrop-blur-md border-b overflow-visible">
       <div className="max-w-6xl mx-auto px-4 flex items-center h-14 gap-1 overflow-visible scrollbar-hide">
         <span className="flex items-center gap-1.5 sm:gap-2 font-extrabold text-sm sm:text-lg tracking-tight mr-3 sm:mr-6 shrink-0">
-          <img src={cloudLogo} alt="Cloud Cards" className="w-7 h-7 sm:w-8 sm:h-8" />
+          <img src={cloudLogo} alt="Cloud Cards" className="w-auto h-[14px] sm:h-[18px]" />
           <span className="whitespace-nowrap"><span className="text-accent">Cloud</span> Cards</span>
         </span>
         {navItems.map((item) => (
