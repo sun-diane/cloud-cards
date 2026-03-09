@@ -11,12 +11,12 @@ const rarityBorder: Record<string, string> = {
   Legendary: "card-border-legendary",
 };
 
-const rarityGradientColor: Record<string, string> = {
-  Common: "hsl(220 10% 60%)",
-  Uncommon: "hsl(142 50% 45%)",
-  Rare: "hsl(217 80% 55%)",
-  "Ultra Rare": "hsl(270 60% 55%)",
-  Legendary: "hsl(30 100% 50%)",
+const rarityGradientColor: Record<string, { mid: string; edge: string }> = {
+  Common: { mid: "hsl(220 10% 88%)", edge: "hsl(220 10% 80%)" },
+  Uncommon: { mid: "hsl(142 30% 85%)", edge: "hsl(142 35% 75%)" },
+  Rare: { mid: "hsl(217 50% 88%)", edge: "hsl(217 60% 78%)" },
+  "Ultra Rare": { mid: "hsl(270 40% 85%)", edge: "hsl(330 50% 80%)" },
+  Legendary: { mid: "hsl(30 70% 88%)", edge: "hsl(30 80% 78%)" },
 };
 
 const rarityLabel: Record<string, string> = {
@@ -77,8 +77,8 @@ export default function CardFront({ card, count, large, owned = true, onClick }:
       )}
         style={card.artType === "favicon" ? {
           backgroundImage: isUltraRare
-            ? 'linear-gradient(135deg, hsl(270 60% 55%) 0%, hsl(330 80% 65%) 100%)'
-            : `radial-gradient(circle at center, hsl(0 0% 100%) 0%, ${rarityGradientColor[card.rarity] || rarityGradientColor.Common}33 60%, ${rarityGradientColor[card.rarity] || rarityGradientColor.Common}66 100%)`,
+            ? 'linear-gradient(135deg, hsl(270 40% 88%) 0%, hsl(330 50% 85%) 100%)'
+            : `radial-gradient(circle at center, hsl(0 0% 100%) 0%, ${(rarityGradientColor[card.rarity] || rarityGradientColor.Common).mid} 50%, ${(rarityGradientColor[card.rarity] || rarityGradientColor.Common).edge} 100%)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         } : undefined}
