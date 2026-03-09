@@ -151,7 +151,7 @@ export default function CollectionPage() {
               />
               <span className={cn(
                 "mt-2 text-sm font-bold rounded-full px-3 py-0.5",
-                count > 0 ? "bg-muted text-foreground" : "bg-muted text-muted-foreground"
+                count > 0 ? "bg-accent text-accent-foreground" : "bg-muted text-muted-foreground"
               )}>
                 ×{count}
               </span>

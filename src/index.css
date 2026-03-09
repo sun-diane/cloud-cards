@@ -129,29 +129,8 @@
     border: 3px solid hsl(var(--rarity-ultra));
   }
   .card-border-legendary {
-    border: 3px solid transparent;
-    background-clip: padding-box;
+    border: 3px solid hsl(var(--accent));
     position: relative;
-  }
-  .card-border-legendary::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: inherit;
-    background: linear-gradient(
-      105deg,
-      hsl(var(--accent)),
-      hsl(var(--reinvent-indigo)),
-      hsl(var(--accent)),
-      hsl(var(--reinvent-fuchsia)),
-      hsl(var(--reinvent-magenta)),
-      hsl(var(--accent)),
-      hsl(var(--reinvent-violet)),
-      hsl(var(--accent))
-    );
-    background-size: 350% 100%;
-    animation: holo-move 4.5s linear infinite;
-    z-index: 0;
   }
 
   .chip-rarity {
