@@ -198,11 +198,22 @@ export default function CollectionPage() {
             <button onClick={() => setSelectedCard(null)} className="absolute -top-3 -right-3 z-10 bg-card rounded-full p-1 card-shadow">
               <X className="w-5 h-5" />
             </button>
-            <CardFront
-              card={selectedCard}
-              count={state.countsByCardId[selectedCard.id] || 0}
-              large
-            />
+            {(state.countsByCardId[selectedCard.id] || 0) > 0 ? (
+              <CardFront
+                card={selectedCard}
+                count={state.countsByCardId[selectedCard.id] || 0}
+                large
+              />
+            ) : (
+              <div className="relative">
+                <CardBack large />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="bg-foreground/70 text-background px-4 py-2 rounded-lg text-sm font-bold">
+                    Not collected
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
