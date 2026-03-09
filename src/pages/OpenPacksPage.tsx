@@ -86,28 +86,7 @@ export default function OpenPacksPage() {
     if (!pullRef.current) return;
     setCopying(true);
     try {
-      // Build a wrapper div with branding + cloned cards
-      const wrapper = document.createElement("div");
-      wrapper.style.cssText = "position:fixed;left:-9999px;top:0;z-index:-1;width:900px;background:#f5f6f8;padding:0;";
-
-      // Add branding
-      const brandingHtml = createShareBrandingHtml("pull");
-      wrapper.insertAdjacentHTML("beforeend", brandingHtml);
-
-      // Clone the cards area
-      const clone = pullRef.current.cloneNode(true) as HTMLElement;
-      clone.querySelectorAll("img").forEach((img) => { img.loading = "eager"; });
-      clone.style.cssText = "display:flex;flex-direction:column;align-items:center;gap:24px;padding:24px;";
-      wrapper.appendChild(clone);
-
-      document.body.appendChild(wrapper);
-      // Small delay to let images settle
-      await new Promise((r) => setTimeout(r, 100));
-      const dataUrl = await toPng(wrapper, { backgroundColor: "#f5f6f8", pixelRatio: 2 });
-      document.body.removeChild(wrapper);
-
-      const res = await fetch(dataUrl);
-      const blob = await res.blob();
+      const blob = await createBrandedShareBlob(pullRef.current, "pull", "#f5f6f8");
       await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
       toast.success("Pack pull copied to clipboard!");
     } catch {
