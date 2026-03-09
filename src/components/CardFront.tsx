@@ -77,7 +77,7 @@ export default function CardFront({ card, count, large, owned = true, onClick }:
       )}
         style={card.artType === "favicon" ? {
           backgroundImage: isUltraRare
-            ? 'linear-gradient(135deg, hsl(270 30% 93%) 0%, hsl(330 35% 88%) 100%)'
+            ? 'linear-gradient(135deg, hsl(280 45% 90%) 0%, hsl(300 50% 82%) 100%)'
             : `linear-gradient(135deg, ${(rarityGradientColor[card.rarity] || rarityGradientColor.Common).start} 0%, ${(rarityGradientColor[card.rarity] || rarityGradientColor.Common).end} 100%)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
