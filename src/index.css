@@ -198,7 +198,7 @@
       transparent 100%
     );
     background-size: 350% 100%;
-    animation: holo-move 14s ease-in-out infinite;
+    animation: holo-move 10.5s ease-in-out infinite;
     pointer-events: none;
     border-radius: inherit;
     z-index: 2;
