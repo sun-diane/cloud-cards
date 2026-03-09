@@ -211,7 +211,10 @@ export default function OpenPacksPage() {
               return (
                 <div key={idx} className="relative pt-4">
                   {isRevealed && newlyDiscovered[idx] && (
-                    <span className="absolute -top-0 left-1/2 -translate-x-1/2 z-20 rounded-full bg-accent text-accent-foreground px-2.5 py-1 text-[10px] font-bold tracking-wide uppercase">
+                    <span
+                      className="absolute -top-0 left-1/2 z-20 rounded-full bg-accent text-accent-foreground px-3 py-1 text-xs font-bold tracking-wide uppercase"
+                      style={{ animation: "new-badge-in 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards, new-badge-glow 2s ease-in-out 0.5s infinite" }}
+                    >
                       New
                     </span>
                   )}
