@@ -6,7 +6,7 @@ export function createShareBrandingHtml(type: "collection" | "pull"): string {
 
   return `<div style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:16px 20px;font-family:Inter,system-ui,sans-serif;border-bottom:2px solid #e5e7eb;">
     <div style="display:flex;align-items:center;gap:10px;">
-      <img src="/favicon.png" style="width:32px;height:32px;" />
+      <img src="${import.meta.env.BASE_URL}favicon.png" style="width:32px;height:32px;" />
       <span style="font-weight:800;font-size:22px;letter-spacing:-0.02em;"><span style="color:#FF9900">Cloud</span> <span style="color:#232F3E">Cards</span></span>
       <span style="color:#9ca3af;font-size:14px;font-weight:500;margin-left:4px;">— ${label}</span>
     </div>

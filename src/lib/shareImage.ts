@@ -31,7 +31,7 @@ export async function createBrandedShareBlob(
   }
 
   const contentImg = await loadImage(contentUrl);
-  const logoImg = await loadImage("/favicon.png").catch(() => null);
+  const logoImg = await loadImage(`${import.meta.env.BASE_URL}favicon.png`).catch(() => null);
 
   const brandingHeight = Math.max(110, Math.min(150, Math.round(contentImg.width * 0.12)));
   const canvas = document.createElement("canvas");

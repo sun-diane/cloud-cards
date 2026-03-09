@@ -155,7 +155,7 @@ export default function OpenPacksPage() {
       {phase === "pack-art" && (
         <div className="flex justify-center animate-pulse">
           <img
-            src="/ui/pack-art.png"
+            src={`${import.meta.env.BASE_URL}ui/pack-art.png`}
             alt="Opening..."
             className="w-80"
           />
