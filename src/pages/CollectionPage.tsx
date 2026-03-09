@@ -98,24 +98,24 @@ export default function CollectionPage() {
     if (!collectionRef.current || sharing) return;
     setSharing(true);
     try {
-      // Clone the grid off-screen so the visible UI doesn't shift
+      // Build a fixed-width wrapper with branding
+      const wrapper = document.createElement("div");
+      wrapper.style.cssText = "position:fixed;left:-9999px;top:0;z-index:-1;width:1200px;background:#ffffff;padding:0;";
+
+      // Add branding
+      const brandingHtml = createShareBrandingHtml("collection");
+      wrapper.insertAdjacentHTML("beforeend", brandingHtml);
+
+      // Clone the grid and force 4-col layout with inline styles (overrides responsive classes)
       const clone = collectionRef.current.cloneNode(true) as HTMLElement;
-      // Force all images to load eagerly in the clone
-      clone.querySelectorAll("img").forEach((img) => {
-        img.loading = "eager";
-      });
-      const brandingEl = document.createElement("div");
-      brandingEl.innerHTML = createShareBrandingHtml("collection");
-      clone.insertBefore(brandingEl.firstChild!, clone.firstChild);
-      clone.style.position = "fixed";
-      clone.style.left = "-9999px";
-      clone.style.top = "0";
-      clone.style.gridTemplateColumns = "repeat(4, 1fr)";
-      clone.style.width = "1200px";
-      clone.style.zIndex = "-1";
-      document.body.appendChild(clone);
-      const dataUrl = await toPng(clone, { backgroundColor: "#ffffff" });
-      document.body.removeChild(clone);
+      clone.querySelectorAll("img").forEach((img) => { img.loading = "eager"; });
+      clone.style.cssText = "display:grid;grid-template-columns:repeat(4,1fr);gap:20px;justify-items:center;padding:8px;width:100%;";
+      wrapper.appendChild(clone);
+
+      document.body.appendChild(wrapper);
+      await new Promise((r) => setTimeout(r, 200));
+      const dataUrl = await toPng(wrapper, { backgroundColor: "#ffffff" });
+      document.body.removeChild(wrapper);
       const res = await fetch(dataUrl);
       const blob = await res.blob();
       await navigator.clipboard.write([
