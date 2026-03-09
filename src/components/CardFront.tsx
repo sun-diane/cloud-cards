@@ -1,7 +1,7 @@
 import { getArtSrc, getPlaceholder } from "@/data/artResolver";
 import type { CardData } from "@/data/types";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, memo } from "react";
 
 const rarityBorder: Record<string, string> = {
   Common: "card-border-common",
