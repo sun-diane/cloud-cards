@@ -41,11 +41,18 @@
     --rarity-uncommon: 142 50% 45%;
     --rarity-rare: 217 80% 55%;
     --rarity-ultra: 270 60% 55%;
-    --rarity-legendary-1: 0 85% 55%;
-    --rarity-legendary-2: 45 95% 55%;
-    --rarity-legendary-3: 140 55% 45%;
-    --rarity-legendary-4: 210 80% 55%;
-    --rarity-legendary-5: 280 65% 55%;
+    --rarity-legendary-1: 249 86% 56%;
+    --rarity-legendary-2: 263 86% 52%;
+    --rarity-legendary-3: 285 82% 56%;
+    --rarity-legendary-4: 312 86% 57%;
+    --rarity-legendary-5: 332 88% 52%;
+
+    /* re:Invent palette */
+    --reinvent-indigo: 249 86% 56%;
+    --reinvent-violet: 263 86% 52%;
+    --reinvent-fuchsia: 285 82% 56%;
+    --reinvent-magenta: 332 88% 52%;
+    --reinvent-chip-foreground: 0 0% 100%;
 
     /* Surfaces */
     --surface-elevated: 0 0% 100%;
@@ -94,6 +101,13 @@
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Inter', system-ui, sans-serif;
   }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @layer components {
@@ -119,6 +133,46 @@
     position: relative;
   }
 
+  .chip-rarity {
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--reinvent-indigo) / 0.45);
+  }
+
+  .chip-rarity-uncommon,
+  .chip-rarity-rare,
+  .chip-rarity-ultra,
+  .chip-rarity-legendary {
+    color: hsl(var(--reinvent-indigo));
+  }
+
+  .chip-rarity-common {
+    background: linear-gradient(120deg, hsl(var(--reinvent-indigo) / 0.18), hsl(var(--reinvent-violet) / 0.2));
+  }
+
+  .chip-rarity-uncommon {
+    background: linear-gradient(120deg, hsl(var(--reinvent-violet) / 0.22), hsl(var(--reinvent-fuchsia) / 0.2));
+  }
+
+  .chip-rarity-rare {
+    background: linear-gradient(120deg, hsl(var(--reinvent-fuchsia) / 0.24), hsl(var(--reinvent-magenta) / 0.22));
+  }
+
+  .chip-rarity-ultra {
+    background: linear-gradient(120deg, hsl(var(--reinvent-violet) / 0.24), hsl(var(--reinvent-magenta) / 0.22));
+    border-color: hsl(var(--reinvent-fuchsia) / 0.55);
+  }
+
+  .chip-rarity-legendary {
+    background: linear-gradient(
+      110deg,
+      hsl(var(--reinvent-indigo) / 0.32) 0%,
+      hsl(var(--reinvent-violet) / 0.34) 35%,
+      hsl(var(--reinvent-fuchsia) / 0.34) 65%,
+      hsl(var(--reinvent-magenta) / 0.35) 100%
+    );
+    border-color: hsl(var(--reinvent-fuchsia) / 0.65);
+  }
+
   .holo-shimmer {
     position: relative;
     overflow: hidden;
@@ -128,17 +182,16 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(
-      90deg,
+      95deg,
       transparent 0%,
-      hsla(0, 80%, 60%, 0.12) 15%,
-      hsla(45, 90%, 55%, 0.14) 30%,
-      hsla(120, 60%, 50%, 0.12) 45%,
-      hsla(180, 70%, 50%, 0.12) 60%,
-      hsla(270, 60%, 55%, 0.14) 75%,
+      hsl(var(--reinvent-indigo) / 0.14) 18%,
+      hsl(var(--reinvent-violet) / 0.18) 38%,
+      hsl(var(--reinvent-fuchsia) / 0.16) 58%,
+      hsl(var(--reinvent-magenta) / 0.18) 78%,
       transparent 100%
     );
-    background-size: 200% 100%;
-    animation: holo-move 4s linear infinite;
+    background-size: 210% 100%;
+    animation: holo-move 3.8s linear infinite;
     pointer-events: none;
     border-radius: inherit;
     z-index: 2;

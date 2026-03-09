@@ -1,7 +1,7 @@
-import { getArtAttemptCount, getArtSrcForAttempt, getPlaceholder } from "@/data/artResolver";
+import { getArtSrc, getPlaceholder } from "@/data/artResolver";
 import type { CardData } from "@/data/types";
 import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const rarityBorder: Record<string, string> = {
   Common: "card-border-common",
@@ -12,11 +12,11 @@ const rarityBorder: Record<string, string> = {
 };
 
 const rarityLabel: Record<string, string> = {
-  Common: "bg-muted text-muted-foreground",
-  Uncommon: "bg-rarity-uncommon/15 text-rarity-uncommon",
-  Rare: "bg-rarity-rare/15 text-rarity-rare",
-  "Ultra Rare": "bg-rarity-ultra/15 text-rarity-ultra",
-  Legendary: "bg-gradient-to-r from-red-500/20 via-yellow-500/20 to-blue-500/20 text-foreground",
+  Common: "chip-rarity chip-rarity-common",
+  Uncommon: "chip-rarity chip-rarity-uncommon",
+  Rare: "chip-rarity chip-rarity-rare",
+  "Ultra Rare": "chip-rarity chip-rarity-ultra",
+  Legendary: "chip-rarity chip-rarity-legendary",
 };
 
 interface CardFrontProps {
@@ -29,23 +29,11 @@ interface CardFrontProps {
 
 export default function CardFront({ card, count, large, owned = true, onClick }: CardFrontProps) {
   const [imgError, setImgError] = useState(false);
-  const [artAttempt, setArtAttempt] = useState(0);
-  const artSrc = imgError ? getPlaceholder(card) : getArtSrcForAttempt(card, artAttempt);
+  const artSrc = imgError ? getPlaceholder(card) : getArtSrc(card);
   const isLegendary = card.rarity === "Legendary";
   const isUltraRare = card.rarity === "Ultra Rare";
 
-  useEffect(() => {
-    setImgError(false);
-    setArtAttempt(0);
-  }, [card.artKey, card.artType]);
-
   const handleImgError = () => {
-    if (imgError) return;
-    const maxAttempts = getArtAttemptCount(card);
-    if (artAttempt < maxAttempts - 1) {
-      setArtAttempt((prev) => prev + 1);
-      return;
-    }
     setImgError(true);
   };
 
@@ -72,7 +60,8 @@ export default function CardFront({ card, count, large, owned = true, onClick }:
 
       {/* Art area */}
       <div className={cn(
-        "relative overflow-hidden bg-muted flex items-center justify-center",
+        "relative overflow-hidden flex items-center justify-center",
+        card.artType === "favicon" ? "bg-muted/60" : "bg-muted",
         large ? "h-[200px]" : "h-[140px]",
         isUltraRare || isLegendary
           ? "mx-0 my-0 rounded-none"
@@ -82,7 +71,12 @@ export default function CardFront({ card, count, large, owned = true, onClick }:
           src={artSrc}
           alt={card.name}
           onError={handleImgError}
-          className="w-full h-full object-cover"
+          className={cn(
+            "w-full h-full",
+            card.artType === "favicon"
+              ? "object-contain p-[10%]"
+              : "object-cover"
+          )}
         />
       </div>
 

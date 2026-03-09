@@ -20,9 +20,10 @@ function formatTime(ms: number) {
 type Phase = "idle" | "pack-art" | "backs" | "revealing" | "done";
 
 export default function OpenPacksPage() {
-  const { packsAvailable, nextRefillMs, openPack, grantAdPack } = useGame();
+  const { state, packsAvailable, nextRefillMs, openPack, grantAdPack } = useGame();
   const [phase, setPhase] = useState<Phase>("idle");
   const [pulled, setPulled] = useState<CardData[]>([]);
+  const [newlyDiscovered, setNewlyDiscovered] = useState<boolean[]>([]);
   const [revealedCount, setRevealedCount] = useState(0);
   const [showAd, setShowAd] = useState(false);
   const [copying, setCopying] = useState(false);
@@ -32,10 +33,19 @@ export default function OpenPacksPage() {
     if (packsAvailable <= 0) return;
     const cards = openPack();
     if (cards.length === 0) return;
+
+    const seenThisPull = new Set<string>();
+    const discovered = cards.map((card) => {
+      const isNewCard = (state.countsByCardId[card.id] || 0) === 0 && !seenThisPull.has(card.id);
+      seenThisPull.add(card.id);
+      return isNewCard;
+    });
+
     setPulled(cards);
+    setNewlyDiscovered(discovered);
     setRevealedCount(0);
     setPhase("pack-art");
-  }, [packsAvailable, openPack]);
+  }, [packsAvailable, openPack, state.countsByCardId]);
 
   // Pack art -> backs transition
   useEffect(() => {
@@ -170,13 +180,20 @@ export default function OpenPacksPage() {
             {topRow.map((card, i) => {
               const isRevealed = i < revealedCount;
               return (
-                <div key={i} className="flip-card w-[260px] h-[310px]">
-                  <div className={cn("flip-card-inner relative w-full h-full", isRevealed && "flipped")}>
-                    <div className="flip-card-back absolute inset-0">
-                      <CardBack />
-                    </div>
-                    <div className="flip-card-front absolute inset-0">
-                      <CardFront card={card} />
+                <div key={i} className="relative">
+                  {isRevealed && newlyDiscovered[i] && (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 rounded-full bg-accent text-accent-foreground px-2 py-0.5 text-[10px] font-bold tracking-wide uppercase">
+                      New
+                    </span>
+                  )}
+                  <div className="flip-card w-[260px] h-[310px]">
+                    <div className={cn("flip-card-inner relative w-full h-full", isRevealed && "flipped")}>
+                      <div className="flip-card-back absolute inset-0">
+                        <CardBack />
+                      </div>
+                      <div className="flip-card-front absolute inset-0">
+                        <CardFront card={card} />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -189,13 +206,20 @@ export default function OpenPacksPage() {
               const idx = i + 3;
               const isRevealed = idx < revealedCount;
               return (
-                <div key={idx} className="flip-card w-[260px] h-[310px]">
-                  <div className={cn("flip-card-inner relative w-full h-full", isRevealed && "flipped")}>
-                    <div className="flip-card-back absolute inset-0">
-                      <CardBack />
-                    </div>
-                    <div className="flip-card-front absolute inset-0">
-                      <CardFront card={card} />
+                <div key={idx} className="relative">
+                  {isRevealed && newlyDiscovered[idx] && (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 rounded-full bg-accent text-accent-foreground px-2 py-0.5 text-[10px] font-bold tracking-wide uppercase">
+                      New
+                    </span>
+                  )}
+                  <div className="flip-card w-[260px] h-[310px]">
+                    <div className={cn("flip-card-inner relative w-full h-full", isRevealed && "flipped")}>
+                      <div className="flip-card-back absolute inset-0">
+                        <CardBack />
+                      </div>
+                      <div className="flip-card-front absolute inset-0">
+                        <CardFront card={card} />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -216,7 +240,7 @@ export default function OpenPacksPage() {
             {copying ? "Copying..." : "Share Pull"}
           </button>
           <button
-            onClick={() => { setPhase("idle"); setPulled([]); setRevealedCount(0); }}
+            onClick={() => { setPhase("idle"); setPulled([]); setNewlyDiscovered([]); setRevealedCount(0); }}
             className="bg-primary text-primary-foreground px-6 py-2.5 rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors"
           >
             {packsAvailable > 0 ? "Open Another Pack" : "Back"}
