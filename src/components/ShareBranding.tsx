@@ -1,35 +1,18 @@
-interface ShareBrandingProps {
-  type: "collection" | "pull";
-}
-
-export default function ShareBranding({ type }: ShareBrandingProps) {
+export function createShareBrandingHtml(type: "collection" | "pull"): string {
   const now = new Date();
-  const dateStr = now.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-  const timeStr = now.toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  const dateStr = now.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+  const timeStr = now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
+  const label = type === "pull" ? "Pack Pull" : "Collection";
 
-  return (
-    <div className="flex items-center justify-between w-full px-2 py-3">
-      <div className="flex items-center gap-2">
-        <img src="/favicon.png" alt="" className="w-6 h-6" />
-        <span className="font-extrabold text-base tracking-tight">
-          <span style={{ color: "#FF9900" }}>Cloud</span>{" "}
-          <span style={{ color: "#232F3E" }}>Cards</span>
-        </span>
-        <span style={{ color: "#6b7280" }} className="text-xs ml-1">
-          — {type === "pull" ? "Pack Pull" : "Collection"}
-        </span>
-      </div>
-      <div className="flex flex-col items-end text-xs" style={{ color: "#6b7280" }}>
-        <span>{dateStr} · {timeStr}</span>
-        <span>cloud-cards-collector.lovable.app</span>
-      </div>
+  return `<div style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:16px 20px;font-family:Inter,system-ui,sans-serif;border-bottom:2px solid #e5e7eb;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img src="/favicon.png" style="width:32px;height:32px;" />
+      <span style="font-weight:800;font-size:22px;letter-spacing:-0.02em;"><span style="color:#FF9900">Cloud</span> <span style="color:#232F3E">Cards</span></span>
+      <span style="color:#9ca3af;font-size:14px;font-weight:500;margin-left:4px;">— ${label}</span>
     </div>
-  );
+    <div style="display:flex;flex-direction:column;align-items:flex-end;font-size:13px;color:#6b7280;font-weight:500;">
+      <span>${dateStr} · ${timeStr}</span>
+      <span style="font-size:12px;">cloud-cards-collector.lovable.app</span>
+    </div>
+  </div>`;
 }
