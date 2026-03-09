@@ -40,6 +40,7 @@ export default function CollectionPage() {
   const [classFilter, setClassFilter] = useState<string | null>(null);
   const [selectedCard, setSelectedCard] = useState<CardData | null>(null);
   const [sharing, setSharing] = useState(false);
+  const handleSelectCard = useCallback((card: CardData) => setSelectedCard(card), []);
   const fileRef = useRef<HTMLInputElement>(null);
   const collectionRef = useRef<HTMLDivElement>(null);
 
