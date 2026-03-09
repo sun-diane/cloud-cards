@@ -273,3 +273,15 @@
   0% { background-position: 100% 0; }
   100% { background-position: -100% 0; }
 }
+
+@keyframes new-badge-in {
+  0% { transform: translate(-50%) scale(0); opacity: 0; }
+  60% { transform: translate(-50%) scale(1.25); opacity: 1; }
+  80% { transform: translate(-50%) scale(0.92); }
+  100% { transform: translate(-50%) scale(1); opacity: 1; }
+}
+
+@keyframes new-badge-glow {
+  0%, 100% { box-shadow: 0 0 6px 1px hsl(var(--accent) / 0.35); }
+  50% { box-shadow: 0 0 14px 4px hsl(var(--accent) / 0.55); }
+}
