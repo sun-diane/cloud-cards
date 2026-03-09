@@ -240,7 +240,7 @@ export default function OpenPacksPage() {
             {copying ? "Copying..." : "Share Pull"}
           </button>
           <button
-            onClick={() => { setPhase("idle"); setPulled([]); setRevealedCount(0); }}
+            onClick={() => { setPhase("idle"); setPulled([]); setNewlyDiscovered([]); setRevealedCount(0); }}
             className="bg-primary text-primary-foreground px-6 py-2.5 rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors"
           >
             {packsAvailable > 0 ? "Open Another Pack" : "Back"}
