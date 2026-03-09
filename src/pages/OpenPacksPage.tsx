@@ -5,7 +5,7 @@ import CardFront from "@/components/CardFront";
 import CardBack from "@/components/CardBack";
 import AdModal from "@/components/AdModal";
 import { cn } from "@/lib/utils";
-import ShareBranding from "@/components/ShareBranding";
+import { createShareBrandingHtml } from "@/components/ShareBranding";
 import { toPng } from "html-to-image";
 import { Share2 } from "lucide-react";
 import { toast } from "sonner";
@@ -86,10 +86,21 @@ export default function OpenPacksPage() {
     if (!pullRef.current) return;
     setCopying(true);
     try {
-      const dataUrl = await toPng(pullRef.current, {
+      const clone = pullRef.current.cloneNode(true) as HTMLElement;
+      clone.querySelectorAll("img").forEach((img) => { img.loading = "eager"; });
+      const brandingEl = document.createElement("div");
+      brandingEl.innerHTML = createShareBrandingHtml("pull");
+      clone.insertBefore(brandingEl.firstChild!, clone.firstChild);
+      clone.style.position = "fixed";
+      clone.style.left = "-9999px";
+      clone.style.top = "0";
+      clone.style.zIndex = "-1";
+      document.body.appendChild(clone);
+      const dataUrl = await toPng(clone, {
         backgroundColor: "#f5f6f8",
         pixelRatio: 2,
       });
+      document.body.removeChild(clone);
       const res = await fetch(dataUrl);
       const blob = await res.blob();
       await navigator.clipboard.write([
@@ -173,7 +184,7 @@ export default function OpenPacksPage() {
       {/* Card reveals - 3+2 layout */}
       {(phase === "backs" || phase === "revealing" || phase === "done") && (
         <div ref={pullRef} className="flex flex-col items-center gap-6 p-6">
-          <ShareBranding type="pull" />
+          
           {/* Top row - 3 cards */}
           <div className="flex flex-wrap justify-center gap-6">
             {topRow.map((card, i) => {
