@@ -174,19 +174,21 @@
     background: linear-gradient(
       105deg,
       transparent 0%,
-      transparent 20%,
-      hsl(var(--reinvent-indigo) / 0.22) 28%,
-      transparent 36%,
-      hsl(var(--reinvent-violet) / 0.2) 42%,
-      transparent 50%,
-      hsl(var(--reinvent-fuchsia) / 0.18) 58%,
-      transparent 66%,
-      hsl(var(--reinvent-magenta) / 0.2) 74%,
-      transparent 82%,
+      transparent 18%,
+      hsl(var(--reinvent-indigo) / 0.18) 24%,
+      transparent 32%,
+      hsl(var(--accent) / 0.22) 38%,
+      transparent 46%,
+      hsl(var(--reinvent-fuchsia) / 0.18) 54%,
+      transparent 62%,
+      hsl(var(--reinvent-magenta) / 0.16) 68%,
+      transparent 76%,
+      hsl(var(--accent) / 0.2) 82%,
+      transparent 90%,
       transparent 100%
     );
-    background-size: 300% 100%;
-    animation: holo-move 4.5s linear infinite;
+    background-size: 350% 100%;
+    animation: holo-move 5s linear infinite;
     pointer-events: none;
     border-radius: inherit;
     z-index: 2;
