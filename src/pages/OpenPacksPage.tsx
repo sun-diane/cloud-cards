@@ -142,9 +142,9 @@ export default function OpenPacksPage() {
               <img
                 src="/ui/pack-art.png"
                 alt="Open Pack"
-                className="w-56 rounded-xl card-shadow"
+                className="w-72"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-foreground/0 group-hover:bg-foreground/10 rounded-xl transition-colors">
+              <div className="absolute inset-0 flex items-center justify-center bg-foreground/0 group-hover:bg-foreground/10 transition-colors">
                 <span className="bg-accent text-accent-foreground px-4 py-2 rounded-lg font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
                   Open Pack
                 </span>
@@ -155,7 +155,7 @@ export default function OpenPacksPage() {
               <img
                 src="/ui/pack-art.png"
                 alt="Pack"
-                className="w-56 rounded-xl card-shadow opacity-50 grayscale"
+                className="w-72 opacity-50 grayscale"
               />
               <p className="text-muted-foreground text-sm">No packs available</p>
             </div>
@@ -169,7 +169,7 @@ export default function OpenPacksPage() {
           <img
             src="/ui/pack-art.png"
             alt="Opening..."
-            className="w-64 rounded-xl card-shadow"
+            className="w-80"
           />
         </div>
       )}
