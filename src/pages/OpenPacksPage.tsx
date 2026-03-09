@@ -236,18 +236,18 @@ export default function OpenPacksPage() {
       )}
 
       {phase === "done" && (
-        <div className="flex items-center justify-center gap-3 mt-8">
+      <div className="flex items-center justify-center gap-4 mt-8">
           <button
             onClick={handleSharePull}
             disabled={copying}
-            className="flex items-center gap-1.5 bg-accent text-accent-foreground px-4 py-2.5 rounded-lg font-medium text-sm hover:bg-accent/80 transition-colors disabled:opacity-50"
+            className="flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-xl font-bold text-base hover:bg-accent/85 transition-colors disabled:opacity-50"
           >
-            <Share2 className="w-4 h-4" />
+            <Share2 className="w-5 h-5" />
             {copying ? "Copying..." : "Share Pull"}
           </button>
           <button
             onClick={() => { setPhase("idle"); setPulled([]); setNewlyDiscovered([]); setRevealedCount(0); }}
-            className="bg-primary text-primary-foreground px-6 py-2.5 rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors"
+            className="px-6 py-3 rounded-xl font-bold text-base border-2 border-border text-foreground hover:bg-muted transition-colors"
           >
             {packsAvailable > 0 ? "Open Another Pack" : "Back"}
           </button>
