@@ -20,9 +20,10 @@ function formatTime(ms: number) {
 type Phase = "idle" | "pack-art" | "backs" | "revealing" | "done";
 
 export default function OpenPacksPage() {
-  const { packsAvailable, nextRefillMs, openPack, grantAdPack } = useGame();
+  const { state, packsAvailable, nextRefillMs, openPack, grantAdPack } = useGame();
   const [phase, setPhase] = useState<Phase>("idle");
   const [pulled, setPulled] = useState<CardData[]>([]);
+  const [newlyDiscovered, setNewlyDiscovered] = useState<boolean[]>([]);
   const [revealedCount, setRevealedCount] = useState(0);
   const [showAd, setShowAd] = useState(false);
   const [copying, setCopying] = useState(false);

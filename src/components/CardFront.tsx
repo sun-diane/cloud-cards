@@ -12,11 +12,11 @@ const rarityBorder: Record<string, string> = {
 };
 
 const rarityLabel: Record<string, string> = {
-  Common: "bg-muted text-muted-foreground",
-  Uncommon: "bg-rarity-uncommon/15 text-rarity-uncommon",
-  Rare: "bg-rarity-rare/15 text-rarity-rare",
-  "Ultra Rare": "bg-rarity-ultra/15 text-rarity-ultra",
-  Legendary: "bg-gradient-to-r from-red-500/20 via-yellow-500/20 to-blue-500/20 text-foreground",
+  Common: "chip-rarity chip-rarity-common",
+  Uncommon: "chip-rarity chip-rarity-uncommon",
+  Rare: "chip-rarity chip-rarity-rare",
+  "Ultra Rare": "chip-rarity chip-rarity-ultra",
+  Legendary: "chip-rarity chip-rarity-legendary",
 };
 
 interface CardFrontProps {

@@ -41,11 +41,18 @@
     --rarity-uncommon: 142 50% 45%;
     --rarity-rare: 217 80% 55%;
     --rarity-ultra: 270 60% 55%;
-    --rarity-legendary-1: 0 85% 55%;
-    --rarity-legendary-2: 45 95% 55%;
-    --rarity-legendary-3: 140 55% 45%;
-    --rarity-legendary-4: 210 80% 55%;
-    --rarity-legendary-5: 280 65% 55%;
+    --rarity-legendary-1: 249 86% 56%;
+    --rarity-legendary-2: 263 86% 52%;
+    --rarity-legendary-3: 285 82% 56%;
+    --rarity-legendary-4: 312 86% 57%;
+    --rarity-legendary-5: 332 88% 52%;
+
+    /* re:Invent palette */
+    --reinvent-indigo: 249 86% 56%;
+    --reinvent-violet: 263 86% 52%;
+    --reinvent-fuchsia: 285 82% 56%;
+    --reinvent-magenta: 332 88% 52%;
+    --reinvent-chip-foreground: 0 0% 100%;
 
     /* Surfaces */
     --surface-elevated: 0 0% 100%;
