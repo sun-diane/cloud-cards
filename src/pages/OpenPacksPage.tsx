@@ -140,7 +140,7 @@ export default function OpenPacksPage() {
               className="group relative cursor-pointer transition-transform hover:scale-105 active:scale-95"
             >
               <img
-                src="/ui/pack-art.webp"
+                src="/ui/pack-art.png"
                 alt="Open Pack"
                 className="w-56 rounded-xl card-shadow"
               />
@@ -153,7 +153,7 @@ export default function OpenPacksPage() {
           ) : (
             <div className="flex flex-col items-center gap-4">
               <img
-                src="/ui/pack-art.webp"
+                src="/ui/pack-art.png"
                 alt="Pack"
                 className="w-56 rounded-xl card-shadow opacity-50 grayscale"
               />
@@ -167,7 +167,7 @@ export default function OpenPacksPage() {
       {phase === "pack-art" && (
         <div className="flex justify-center animate-pulse">
           <img
-            src="/ui/pack-art.webp"
+            src="/ui/pack-art.png"
             alt="Opening..."
             className="w-64 rounded-xl card-shadow"
           />
