@@ -163,29 +163,14 @@ export default function CollectionPage() {
 
       {/* Grid */}
       <div ref={collectionRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-items-center p-2">
-        {filtered.map((card) => {
-          const count = state.countsByCardId[card.id] || 0;
-          const owned = count > 0;
-          return (
-            <div
-              key={card.id}
-              className="flex flex-col items-center transition-all"
-              onClick={() => setSelectedCard(card)}
-            >
-              {owned ? (
-                <CardFront card={card} owned />
-              ) : (
-                <CardBack className="grayscale opacity-50 cursor-pointer" />
-              )}
-              <span className={cn(
-                "mt-2 text-sm font-bold rounded-full px-3 py-0.5",
-                owned ? "bg-secondary text-foreground" : "bg-muted text-muted-foreground"
-              )}>
-                {owned ? `×${count}` : "×0"}
-              </span>
-            </div>
-          );
-        })}
+        {filtered.map((card) => (
+          <CollectionCard
+            key={card.id}
+            card={card}
+            count={state.countsByCardId[card.id] || 0}
+            onSelect={handleSelectCard}
+          />
+        ))}
       </div>
 
       {filtered.length === 0 && (
