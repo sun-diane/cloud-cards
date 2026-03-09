@@ -144,11 +144,6 @@ export default function OpenPacksPage() {
                 alt="Open Pack"
                 className="w-72"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-foreground/0 group-hover:bg-foreground/10 transition-colors">
-                <span className="bg-accent text-accent-foreground px-4 py-2 rounded-lg font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                  Open Pack
-                </span>
-              </div>
             </button>
           ) : (
             <div className="flex flex-col items-center gap-4">
