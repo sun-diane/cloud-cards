@@ -163,7 +163,7 @@ export default function CollectionPage() {
                 "mt-2 text-sm font-bold rounded-full px-3 py-0.5",
                 owned ? "bg-secondary text-foreground" : "bg-muted text-muted-foreground"
               )}>
-                {owned ? `×${count}` : "???"}
+                {owned ? `×${count}` : "×0"}
               </span>
             </div>
           );
