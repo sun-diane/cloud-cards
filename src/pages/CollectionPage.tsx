@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useCallback, memo } from "react";
 import { useGame } from "@/context/GameContext";
 import CardFront from "@/components/CardFront";
 import CardBack from "@/components/CardBack";
