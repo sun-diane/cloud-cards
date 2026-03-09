@@ -72,14 +72,18 @@ export default function CollectionPage() {
   const handleShareCollection = async () => {
     if (!collectionRef.current || sharing) return;
     setSharing(true);
-    const el = collectionRef.current;
-    const prevStyle = el.style.cssText;
     try {
-      // Force 4-column layout for the capture
-      el.style.gridTemplateColumns = "repeat(4, 1fr)";
-      el.style.width = "1200px";
-      const dataUrl = await toPng(el, { backgroundColor: "#ffffff" });
-      el.style.cssText = prevStyle;
+      // Clone the grid off-screen so the visible UI doesn't shift
+      const clone = collectionRef.current.cloneNode(true) as HTMLElement;
+      clone.style.position = "fixed";
+      clone.style.left = "-9999px";
+      clone.style.top = "0";
+      clone.style.gridTemplateColumns = "repeat(4, 1fr)";
+      clone.style.width = "1200px";
+      clone.style.zIndex = "-1";
+      document.body.appendChild(clone);
+      const dataUrl = await toPng(clone, { backgroundColor: "#ffffff" });
+      document.body.removeChild(clone);
       const res = await fetch(dataUrl);
       const blob = await res.blob();
       await navigator.clipboard.write([
@@ -87,7 +91,6 @@ export default function CollectionPage() {
       ]);
       toast.success("Collection copied to clipboard!");
     } catch {
-      el.style.cssText = prevStyle;
       toast.error("Failed to copy collection image.");
     } finally {
       setSharing(false);
