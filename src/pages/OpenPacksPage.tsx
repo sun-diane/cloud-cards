@@ -167,7 +167,7 @@ export default function OpenPacksPage() {
       {phase === "pack-art" && (
         <div className="flex justify-center animate-pulse">
           <img
-            src="/ui/pack-art.webp"
+            src="/ui/pack-art.png"
             alt="Opening..."
             className="w-64 rounded-xl card-shadow"
           />
