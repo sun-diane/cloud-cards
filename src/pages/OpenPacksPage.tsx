@@ -5,6 +5,7 @@ import CardFront from "@/components/CardFront";
 import CardBack from "@/components/CardBack";
 import AdModal from "@/components/AdModal";
 import { cn } from "@/lib/utils";
+import ShareBranding from "@/components/ShareBranding";
 import { toPng } from "html-to-image";
 import { Share2 } from "lucide-react";
 import { toast } from "sonner";
@@ -172,6 +173,7 @@ export default function OpenPacksPage() {
       {/* Card reveals - 3+2 layout */}
       {(phase === "backs" || phase === "revealing" || phase === "done") && (
         <div ref={pullRef} className="flex flex-col items-center gap-6 p-6">
+          <ShareBranding type="pull" />
           {/* Top row - 3 cards */}
           <div className="flex flex-wrap justify-center gap-6">
             {topRow.map((card, i) => {
