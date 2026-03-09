@@ -169,7 +169,7 @@ export default function OpenPacksPage() {
           <img
             src="/ui/pack-art.png"
             alt="Opening..."
-            className="w-64 rounded-xl card-shadow"
+            className="w-80"
           />
         </div>
       )}
