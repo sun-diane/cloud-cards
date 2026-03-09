@@ -78,7 +78,7 @@ export default function CardFront({ card, count, large, owned = true, onClick }:
         style={card.artType === "favicon" ? {
           backgroundImage: isUltraRare
             ? 'url(/ui/bg-favicon-common.jpg)'
-            : 'radial-gradient(circle at center, hsl(0 0% 100%) 0%, hsl(220 8% 85%) 70%, hsl(220 10% 78%) 100%)',
+            : `radial-gradient(circle at center, hsl(0 0% 100%) 0%, ${rarityGradientColor[card.rarity] || rarityGradientColor.Common}33 60%, ${rarityGradientColor[card.rarity] || rarityGradientColor.Common}66 100%)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         } : undefined}
