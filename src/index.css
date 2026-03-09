@@ -134,43 +134,32 @@
   }
 
   .chip-rarity {
-    color: hsl(var(--foreground));
-    border: 1px solid hsl(var(--reinvent-indigo) / 0.45);
-  }
-
-  .chip-rarity-uncommon,
-  .chip-rarity-rare,
-  .chip-rarity-ultra,
-  .chip-rarity-legendary {
-    color: hsl(var(--reinvent-indigo));
+    border: none;
   }
 
   .chip-rarity-common {
-    background: linear-gradient(120deg, hsl(var(--reinvent-indigo) / 0.18), hsl(var(--reinvent-violet) / 0.2));
+    background: hsl(var(--rarity-common) / 0.18);
+    color: hsl(var(--rarity-common));
   }
 
   .chip-rarity-uncommon {
-    background: linear-gradient(120deg, hsl(var(--reinvent-violet) / 0.22), hsl(var(--reinvent-fuchsia) / 0.2));
+    background: hsl(var(--rarity-uncommon) / 0.18);
+    color: hsl(var(--rarity-uncommon));
   }
 
   .chip-rarity-rare {
-    background: linear-gradient(120deg, hsl(var(--reinvent-fuchsia) / 0.24), hsl(var(--reinvent-magenta) / 0.22));
+    background: hsl(var(--rarity-rare) / 0.18);
+    color: hsl(var(--rarity-rare));
   }
 
   .chip-rarity-ultra {
-    background: linear-gradient(120deg, hsl(var(--reinvent-violet) / 0.24), hsl(var(--reinvent-magenta) / 0.22));
-    border-color: hsl(var(--reinvent-fuchsia) / 0.55);
+    background: hsl(var(--rarity-ultra) / 0.18);
+    color: hsl(var(--rarity-ultra));
   }
 
   .chip-rarity-legendary {
-    background: linear-gradient(
-      110deg,
-      hsl(var(--reinvent-indigo) / 0.32) 0%,
-      hsl(var(--reinvent-violet) / 0.34) 35%,
-      hsl(var(--reinvent-fuchsia) / 0.34) 65%,
-      hsl(var(--reinvent-magenta) / 0.35) 100%
-    );
-    border-color: hsl(var(--reinvent-fuchsia) / 0.65);
+    background: hsl(var(--accent) / 0.2);
+    color: hsl(var(--accent));
   }
 
   .holo-shimmer {
@@ -182,16 +171,25 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(
-      95deg,
+      105deg,
       transparent 0%,
-      hsl(var(--reinvent-indigo) / 0.14) 18%,
-      hsl(var(--reinvent-violet) / 0.18) 38%,
-      hsl(var(--reinvent-fuchsia) / 0.16) 58%,
-      hsl(var(--reinvent-magenta) / 0.18) 78%,
+      transparent 10%,
+      hsl(var(--accent) / 0.18) 16%,
+      transparent 22%,
+      hsl(var(--reinvent-fuchsia) / 0.15) 30%,
+      transparent 36%,
+      hsl(var(--reinvent-indigo) / 0.14) 44%,
+      transparent 50%,
+      hsl(var(--accent) / 0.16) 58%,
+      transparent 64%,
+      hsl(var(--reinvent-magenta) / 0.15) 72%,
+      transparent 78%,
+      hsl(var(--reinvent-violet) / 0.12) 86%,
+      transparent 92%,
       transparent 100%
     );
-    background-size: 210% 100%;
-    animation: holo-move 3.8s linear infinite;
+    background-size: 350% 100%;
+    animation: holo-move 4.5s linear infinite;
     pointer-events: none;
     border-radius: inherit;
     z-index: 2;
