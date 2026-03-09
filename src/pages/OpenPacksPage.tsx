@@ -174,15 +174,15 @@ export default function OpenPacksPage() {
 
       {/* Card reveals - 3+2 layout */}
       {(phase === "backs" || phase === "revealing" || phase === "done") && (
-        <div ref={pullRef} className="flex flex-col items-center gap-4 p-4">
+        <div ref={pullRef} className="flex flex-col items-center gap-6 p-6">
           {/* Top row - 3 cards */}
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-6">
             {topRow.map((card, i) => {
               const isRevealed = i < revealedCount;
               return (
-                <div key={i} className="relative">
+                <div key={i} className="relative pt-4">
                   {isRevealed && newlyDiscovered[i] && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 rounded-full bg-accent text-accent-foreground px-2 py-0.5 text-[10px] font-bold tracking-wide uppercase">
+                    <span className="absolute -top-0 left-1/2 -translate-x-1/2 z-20 rounded-full bg-accent text-accent-foreground px-2.5 py-1 text-[10px] font-bold tracking-wide uppercase">
                       New
                     </span>
                   )}
@@ -201,14 +201,14 @@ export default function OpenPacksPage() {
             })}
           </div>
           {/* Bottom row - 2 cards */}
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-6">
             {bottomRow.map((card, i) => {
               const idx = i + 3;
               const isRevealed = idx < revealedCount;
               return (
-                <div key={idx} className="relative">
+                <div key={idx} className="relative pt-4">
                   {isRevealed && newlyDiscovered[idx] && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 rounded-full bg-accent text-accent-foreground px-2 py-0.5 text-[10px] font-bold tracking-wide uppercase">
+                    <span className="absolute -top-0 left-1/2 -translate-x-1/2 z-20 rounded-full bg-accent text-accent-foreground px-2.5 py-1 text-[10px] font-bold tracking-wide uppercase">
                       New
                     </span>
                   )}
