@@ -11,12 +11,12 @@ const rarityBorder: Record<string, string> = {
   Legendary: "card-border-legendary",
 };
 
-const rarityGradientColor: Record<string, { mid: string; edge: string }> = {
-  Common: { mid: "hsl(220 10% 88%)", edge: "hsl(220 10% 80%)" },
-  Uncommon: { mid: "hsl(142 30% 85%)", edge: "hsl(142 35% 75%)" },
-  Rare: { mid: "hsl(217 50% 88%)", edge: "hsl(217 60% 78%)" },
-  "Ultra Rare": { mid: "hsl(270 40% 85%)", edge: "hsl(330 50% 80%)" },
-  Legendary: { mid: "hsl(30 70% 88%)", edge: "hsl(30 80% 78%)" },
+const rarityGradientColor: Record<string, { start: string; end: string }> = {
+  Common: { start: "hsl(220 8% 96%)", end: "hsl(220 8% 88%)" },
+  Uncommon: { start: "hsl(142 20% 95%)", end: "hsl(142 25% 85%)" },
+  Rare: { start: "hsl(217 35% 95%)", end: "hsl(217 40% 85%)" },
+  "Ultra Rare": { start: "hsl(270 30% 93%)", end: "hsl(330 35% 88%)" },
+  Legendary: { start: "hsl(30 50% 95%)", end: "hsl(30 60% 85%)" },
 };
 
 const rarityLabel: Record<string, string> = {
