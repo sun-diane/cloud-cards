@@ -147,23 +147,27 @@ export default function CollectionPage() {
       <div ref={collectionRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-items-center p-2">
         {filtered.map((card) => {
           const count = state.countsByCardId[card.id] || 0;
+          const owned = count > 0;
           return (
             <div
               key={card.id}
-              className={cn("flex flex-col items-center transition-all", count === 0 && "grayscale opacity-50")}
+              className="flex flex-col items-center transition-all"
+              onClick={() => setSelectedCard(card)}
             >
-              <CardFront
-                card={card}
-                owned={count > 0}
-                onClick={() => setSelectedCard(card)}
-              />
+              {owned ? (
+                <CardFront card={card} owned />
+              ) : (
+                <CardBack className="grayscale opacity-50 cursor-pointer" />
+              )}
               <span className={cn(
                 "mt-2 text-sm font-bold rounded-full px-3 py-0.5",
-                count > 0 ? "bg-secondary text-foreground" : "bg-muted text-muted-foreground"
+                owned ? "bg-secondary text-foreground" : "bg-muted text-muted-foreground"
               )}>
-                ×{count}
+                {owned ? `×${count}` : "???"}
               </span>
             </div>
+          );
+        })}
           );
         })}
       </div>
