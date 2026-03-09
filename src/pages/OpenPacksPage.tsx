@@ -180,13 +180,20 @@ export default function OpenPacksPage() {
             {topRow.map((card, i) => {
               const isRevealed = i < revealedCount;
               return (
-                <div key={i} className="flip-card w-[260px] h-[310px]">
-                  <div className={cn("flip-card-inner relative w-full h-full", isRevealed && "flipped")}>
-                    <div className="flip-card-back absolute inset-0">
-                      <CardBack />
-                    </div>
-                    <div className="flip-card-front absolute inset-0">
-                      <CardFront card={card} />
+                <div key={i} className="relative">
+                  {isRevealed && newlyDiscovered[i] && (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 rounded-full bg-accent text-accent-foreground px-2 py-0.5 text-[10px] font-bold tracking-wide uppercase">
+                      New
+                    </span>
+                  )}
+                  <div className="flip-card w-[260px] h-[310px]">
+                    <div className={cn("flip-card-inner relative w-full h-full", isRevealed && "flipped")}>
+                      <div className="flip-card-back absolute inset-0">
+                        <CardBack />
+                      </div>
+                      <div className="flip-card-front absolute inset-0">
+                        <CardFront card={card} />
+                      </div>
                     </div>
                   </div>
                 </div>
