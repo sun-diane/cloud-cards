@@ -140,7 +140,7 @@ export default function OpenPacksPage() {
               className="group relative cursor-pointer transition-transform hover:scale-105 active:scale-95"
             >
               <img
-                src="/ui/pack-art.webp"
+                src="/ui/pack-art.png"
                 alt="Open Pack"
                 className="w-56 rounded-xl card-shadow"
               />
