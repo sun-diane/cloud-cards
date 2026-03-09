@@ -122,4 +122,6 @@ const CardFront = memo(function CardFront({ card, count, large, owned = true, on
       </p>
     </div>
   );
-}
+});
+
+export default CardFront;
