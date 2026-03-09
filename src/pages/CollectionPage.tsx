@@ -75,6 +75,10 @@ export default function CollectionPage() {
     try {
       // Clone the grid off-screen so the visible UI doesn't shift
       const clone = collectionRef.current.cloneNode(true) as HTMLElement;
+      // Force all images to load eagerly in the clone (lazy ones won't render off-screen)
+      clone.querySelectorAll("img").forEach((img) => {
+        img.loading = "eager";
+      });
       clone.style.position = "fixed";
       clone.style.left = "-9999px";
       clone.style.top = "0";
