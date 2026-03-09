@@ -12,7 +12,7 @@ export function createShareBrandingHtml(type: "collection" | "pull"): string {
     </div>
     <div style="display:flex;flex-direction:column;align-items:flex-end;font-size:13px;color:#6b7280;font-weight:500;">
       <span>${dateStr} · ${timeStr}</span>
-      <span style="font-size:12px;">cloud-cards-collector.lovable.app</span>
+      <span style="font-size:12px;">${window.location.host}${import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL}</span>
     </div>
   </div>`;
 }

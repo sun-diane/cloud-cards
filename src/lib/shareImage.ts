@@ -71,7 +71,7 @@ export async function createBrandedShareBlob(
 
   const now = new Date();
   const stamp = `${now.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })} · ${now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })}`;
-  const url = "cloud-cards-collector.lovable.app";
+  const url = window.location.host + (import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL);
 
   ctx.textAlign = "right";
   ctx.textBaseline = "middle";
