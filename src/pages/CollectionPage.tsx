@@ -104,24 +104,9 @@ export default function CollectionPage() {
       clone.querySelectorAll("img").forEach((img) => {
         img.loading = "eager";
       });
-      // Add branding header
-      const now = new Date();
-      const dateStr = now.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
-      const timeStr = now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
       const brandingEl = document.createElement("div");
-      brandingEl.style.cssText = "display:flex;align-items:center;justify-content:space-between;width:100%;padding:12px 8px;font-family:Inter,system-ui,sans-serif;";
-      brandingEl.innerHTML = `
-        <div style="display:flex;align-items:center;gap:8px;">
-          <img src="/favicon.png" style="width:24px;height:24px;" />
-          <span style="font-weight:800;font-size:16px;"><span style="color:#FF9900">Cloud</span> <span style="color:#232F3E">Cards</span></span>
-          <span style="color:#6b7280;font-size:12px;margin-left:4px;">— Collection</span>
-        </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;font-size:12px;color:#6b7280;">
-          <span>${dateStr} · ${timeStr}</span>
-          <span>cloud-cards-collector.lovable.app</span>
-        </div>
-      `;
-      clone.insertBefore(brandingEl, clone.firstChild);
+      brandingEl.innerHTML = createShareBrandingHtml("collection");
+      clone.insertBefore(brandingEl.firstChild!, clone.firstChild);
       clone.style.position = "fixed";
       clone.style.left = "-9999px";
       clone.style.top = "0";
