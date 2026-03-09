@@ -26,19 +26,7 @@ export function useGame() {
 
 export function GameProvider({ children }: { children: React.ReactNode }) {
   const cards = useRef(loadCards()).current;
-  const [state, setState] = useState<AppState>(() => {
-    const loaded = loadState();
-    // For testing: give 1 of every card if collection is empty
-    if (Object.keys(loaded.countsByCardId).length === 0) {
-      const allCards = loadCards();
-      const testCounts: Record<string, number> = {};
-      for (const card of allCards) {
-        testCounts[card.id] = 1;
-      }
-      return { ...loaded, countsByCardId: testCounts };
-    }
-    return loaded;
-  });
+  const [state, setState] = useState<AppState>(() => loadState());
   const [nextRefillMs, setNextRefillMs] = useState(0);
 
   // Refill timer
