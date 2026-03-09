@@ -70,7 +70,7 @@ export default function CardFront({ card, count, large, owned = true, onClick }:
         style={card.artType === "favicon" ? {
           backgroundImage: isUltraRare
             ? 'url(/ui/bg-favicon-common.jpg)'
-            : 'radial-gradient(circle, hsl(220 10% 94%) 0%, hsl(220 10% 85%) 100%)',
+            : 'radial-gradient(circle, hsl(0 0% 100%) 0%, hsl(220 5% 92%) 100%)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         } : undefined}
