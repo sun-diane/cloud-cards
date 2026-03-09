@@ -53,7 +53,7 @@ export default function CardFront({ card, count, large, owned = true, onClick }:
         rarityBorder[card.rarity] || "card-border-common",
         isLegendary && owned && "holo-shimmer",
         isUltraRare && owned && "ultra-shimmer",
-        large ? "w-[340px] h-[380px]" : "w-[260px] h-[310px]"
+        large ? "w-[340px] h-[405px]" : "w-[260px] h-[310px]"
       )}
     >
       {/* Header */}
