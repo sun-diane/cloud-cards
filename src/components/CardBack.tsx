@@ -15,7 +15,7 @@ export default function CardBack({ large, className }: CardBackProps) {
       )}
     >
       <img
-        src="/ui/card-back.jpg"
+        src="/ui/card-back.png"
         alt="Card Back"
         className="w-full h-full object-cover"
       />
