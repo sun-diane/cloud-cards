@@ -11,6 +11,28 @@ import Papa from "papaparse";
 
 const RARITIES = ["Common", "Uncommon", "Rare", "Ultra Rare", "Legendary"];
 
+const CollectionCard = memo(({ card, count, onSelect }: { card: CardData; count: number; onSelect: (card: CardData) => void }) => {
+  const owned = count > 0;
+  return (
+    <div
+      className="flex flex-col items-center"
+      onClick={() => onSelect(card)}
+    >
+      {owned ? (
+        <CardFront card={card} owned />
+      ) : (
+        <CardBack className="grayscale opacity-50 cursor-pointer" />
+      )}
+      <span className={cn(
+        "mt-2 text-sm font-bold rounded-full px-3 py-0.5",
+        owned ? "bg-secondary text-foreground" : "bg-muted text-muted-foreground"
+      )}>
+        {owned ? `×${count}` : "×0"}
+      </span>
+    </div>
+  );
+});
+
 export default function CollectionPage() {
   const { cards, state, exportCollection, importCollection, resetCollection } = useGame();
   const [search, setSearch] = useState("");
