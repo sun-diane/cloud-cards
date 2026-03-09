@@ -86,10 +86,21 @@ export default function OpenPacksPage() {
     if (!pullRef.current) return;
     setCopying(true);
     try {
-      const dataUrl = await toPng(pullRef.current, {
+      const clone = pullRef.current.cloneNode(true) as HTMLElement;
+      clone.querySelectorAll("img").forEach((img) => { img.loading = "eager"; });
+      const brandingEl = document.createElement("div");
+      brandingEl.innerHTML = createShareBrandingHtml("pull");
+      clone.insertBefore(brandingEl.firstChild!, clone.firstChild);
+      clone.style.position = "fixed";
+      clone.style.left = "-9999px";
+      clone.style.top = "0";
+      clone.style.zIndex = "-1";
+      document.body.appendChild(clone);
+      const dataUrl = await toPng(clone, {
         backgroundColor: "#f5f6f8",
         pixelRatio: 2,
       });
+      document.body.removeChild(clone);
       const res = await fetch(dataUrl);
       const blob = await res.blob();
       await navigator.clipboard.write([
