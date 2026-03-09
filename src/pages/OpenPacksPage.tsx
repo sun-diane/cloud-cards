@@ -155,7 +155,7 @@ export default function OpenPacksPage() {
               <img
                 src="/ui/pack-art.png"
                 alt="Pack"
-                className="w-56 rounded-xl card-shadow opacity-50 grayscale"
+                className="w-72 opacity-50 grayscale"
               />
               <p className="text-muted-foreground text-sm">No packs available</p>
             </div>
