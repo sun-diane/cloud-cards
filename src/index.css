@@ -129,7 +129,16 @@
     border: 3px solid hsl(var(--rarity-ultra));
   }
   .card-border-legendary {
-    border: 3px solid hsl(var(--accent));
+    border: 3px solid transparent;
+    background: 
+      linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box,
+      linear-gradient(135deg, 
+        hsl(var(--accent)) 0%,
+        hsl(var(--reinvent-magenta)) 25%,
+        hsl(var(--reinvent-fuchsia)) 50%,
+        hsl(var(--reinvent-violet)) 75%,
+        hsl(var(--accent)) 100%
+      ) border-box;
     position: relative;
   }
 
