@@ -31,12 +31,14 @@ export default function OpenPacksPage() {
 
   const handleOpen = useCallback(() => {
     if (packsAvailable <= 0) return;
+    // Capture counts BEFORE openPack updates state
+    const countsBefore = { ...state.countsByCardId };
     const cards = openPack();
     if (cards.length === 0) return;
 
     const seenThisPull = new Set<string>();
     const discovered = cards.map((card) => {
-      const isNewCard = (state.countsByCardId[card.id] || 0) === 0 && !seenThisPull.has(card.id);
+      const isNewCard = (countsBefore[card.id] || 0) === 0 && !seenThisPull.has(card.id);
       seenThisPull.add(card.id);
       return isNewCard;
     });
