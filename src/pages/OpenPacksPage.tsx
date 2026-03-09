@@ -33,10 +33,19 @@ export default function OpenPacksPage() {
     if (packsAvailable <= 0) return;
     const cards = openPack();
     if (cards.length === 0) return;
+
+    const seenThisPull = new Set<string>();
+    const discovered = cards.map((card) => {
+      const isNewCard = (state.countsByCardId[card.id] || 0) === 0 && !seenThisPull.has(card.id);
+      seenThisPull.add(card.id);
+      return isNewCard;
+    });
+
     setPulled(cards);
+    setNewlyDiscovered(discovered);
     setRevealedCount(0);
     setPhase("pack-art");
-  }, [packsAvailable, openPack]);
+  }, [packsAvailable, openPack, state.countsByCardId]);
 
   // Pack art -> backs transition
   useEffect(() => {
