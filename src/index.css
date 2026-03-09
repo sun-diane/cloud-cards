@@ -18,7 +18,7 @@
     --primary: 220 60% 18%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 92%;
+    --secondary: 220 15% 83%;
     --secondary-foreground: 220 30% 15%;
 
     --muted: 220 15% 94%;
@@ -37,7 +37,7 @@
     --radius: 0.625rem;
 
     /* Card rarity borders */
-    --rarity-common: 220 10% 70%;
+    --rarity-common: 220 10% 60%;
     --rarity-uncommon: 142 50% 45%;
     --rarity-rare: 217 80% 55%;
     --rarity-ultra: 270 60% 55%;
