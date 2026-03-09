@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { GameProvider } from "@/context/GameContext";
 import AppNav from "@/components/AppNav";
 import OpenPacksPage from "@/pages/OpenPacksPage";
@@ -17,14 +17,14 @@ const App = () => (
       <Toaster />
       <Sonner />
       <GameProvider>
-        <BrowserRouter>
+        <HashRouter>
           <AppNav />
           <Routes>
             <Route path="/" element={<OpenPacksPage />} />
             <Route path="/collection" element={<CollectionPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </GameProvider>
     </TooltipProvider>
   </QueryClientProvider>
