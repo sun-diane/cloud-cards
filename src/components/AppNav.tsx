@@ -11,10 +11,10 @@ const navItems = [
 export default function AppNav() {
   return (
     <nav className="sticky top-0 z-50 bg-card/80 backdrop-blur-md border-b">
-      <div className="max-w-6xl mx-auto px-4 flex items-center h-14 gap-1">
-        <span className="flex items-center gap-2 font-extrabold text-lg tracking-tight mr-6">
-          <img src={cloudLogo} alt="Cloud Cards" className="w-6 h-6 [filter:invert(50%)_sepia(100%)_saturate(500%)_hue-rotate(360deg)_brightness(105%)]" />
-          <span><span className="text-accent">Cloud</span> Cards</span>
+      <div className="max-w-6xl mx-auto px-4 flex items-center h-14 gap-1 overflow-x-auto scrollbar-hide">
+        <span className="flex items-center gap-1.5 sm:gap-2 font-extrabold text-sm sm:text-lg tracking-tight mr-3 sm:mr-6 shrink-0">
+          <img src={cloudLogo} alt="Cloud Cards" className="w-5 h-5 sm:w-6 sm:h-6 [filter:invert(50%)_sepia(100%)_saturate(500%)_hue-rotate(360deg)_brightness(105%)]" />
+          <span className="whitespace-nowrap"><span className="text-accent">Cloud</span> Cards</span>
         </span>
         {navItems.map((item) => (
           <RouterNavLink
