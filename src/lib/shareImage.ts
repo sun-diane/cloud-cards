@@ -26,7 +26,7 @@ export async function createBrandedShareBlob(
   const contentImg = await loadImage(contentUrl);
   const logoImg = await loadImage("/favicon.png").catch(() => null);
 
-  const brandingHeight = Math.max(88, Math.min(120, Math.round(contentImg.width * 0.09)));
+  const brandingHeight = Math.max(110, Math.min(150, Math.round(contentImg.width * 0.12)));
   const canvas = document.createElement("canvas");
   canvas.width = contentImg.width;
   canvas.height = contentImg.height + brandingHeight;
@@ -38,38 +38,41 @@ export async function createBrandedShareBlob(
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   const padX = Math.round(canvas.width * 0.035);
-  const midY = Math.round(brandingHeight / 2);
+  const titleY = Math.round(brandingHeight * 0.42);
+  const subY = Math.round(brandingHeight * 0.72);
 
+  const logoSize = Math.round(brandingHeight * 0.30);
   if (logoImg) {
-    const logoSize = Math.round(brandingHeight * 0.38);
-    ctx.drawImage(logoImg, padX, Math.round(midY - logoSize / 2), logoSize, logoSize);
+    ctx.drawImage(logoImg, padX, Math.round(titleY - logoSize * 0.55), logoSize, logoSize);
   }
 
-  const titleX = padX + Math.round(brandingHeight * 0.48);
-  ctx.font = `800 ${Math.round(brandingHeight * 0.29)}px Inter, system-ui, sans-serif`;
+  const leftX = padX + logoSize + Math.round(brandingHeight * 0.10);
+  const titleSize = Math.round(brandingHeight * 0.33);
+
   ctx.textBaseline = "middle";
+  ctx.font = `800 ${titleSize}px Inter, system-ui, sans-serif`;
   ctx.fillStyle = "#FF9900";
-  ctx.fillText("Cloud", titleX, midY);
-
+  ctx.fillText("Cloud", leftX, titleY);
   const cloudWidth = ctx.measureText("Cloud").width;
-  ctx.fillStyle = "#1F2937";
-  ctx.fillText(" Cards", titleX + cloudWidth, midY);
 
-  ctx.font = `500 ${Math.round(brandingHeight * 0.17)}px Inter, system-ui, sans-serif`;
+  ctx.fillStyle = "#1F2937";
+  ctx.fillText(" Cards", leftX + cloudWidth, titleY);
+
+  ctx.font = `600 ${Math.round(brandingHeight * 0.17)}px Inter, system-ui, sans-serif`;
   ctx.fillStyle = "#6B7280";
-  ctx.fillText(` — ${type === "pull" ? "Pack Pull" : "Collection"}`, titleX + cloudWidth + ctx.measureText(" Cards").width + 8, midY + 1);
+  ctx.fillText(type === "pull" ? "Pack Pull" : "Collection", leftX + 2, subY);
 
   const now = new Date();
   const stamp = `${now.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })} · ${now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })}`;
   const url = "cloud-cards-collector.lovable.app";
 
   ctx.textAlign = "right";
-  ctx.textBaseline = "alphabetic";
-  ctx.font = `500 ${Math.round(brandingHeight * 0.15)}px Inter, system-ui, sans-serif`;
+  ctx.textBaseline = "middle";
+  ctx.font = `600 ${Math.round(brandingHeight * 0.15)}px Inter, system-ui, sans-serif`;
   ctx.fillStyle = "#6B7280";
-  ctx.fillText(stamp, canvas.width - padX, Math.round(brandingHeight * 0.46));
-  ctx.font = `500 ${Math.round(brandingHeight * 0.14)}px Inter, system-ui, sans-serif`;
-  ctx.fillText(url, canvas.width - padX, Math.round(brandingHeight * 0.70));
+  ctx.fillText(stamp, canvas.width - padX, Math.round(brandingHeight * 0.42));
+  ctx.font = `600 ${Math.round(brandingHeight * 0.14)}px Inter, system-ui, sans-serif`;
+  ctx.fillText(url, canvas.width - padX, Math.round(brandingHeight * 0.72));
   ctx.textAlign = "start";
 
   ctx.strokeStyle = "#E5E7EB";
