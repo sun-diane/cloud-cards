@@ -1,4 +1,4 @@
-Setnum,id,baseId,name,rarity,hp,attack,class,flavor,artKey,artType,Set
+﻿Setnum,id,baseId,name,rarity,hp,attack,class,flavor,artKey,artType,Set
 1,amazon-ec2-C,amazon-ec2,Amazon EC2,Common,80,40,Product,"Virtual machines on demand. Pay only for what you run, scale up/down quickly, and deploy globally. Entry point for AWS customer acquisition and long-term infrastructure spend.",amazon-ec2-C,favicon,base
 2,amazon-s3-C,amazon-s3,Amazon S3,Common,50,60,Product,"Object storage for files and data at any scale. Used for backups, app assets, and data lakes because it's durable, low cost, and integrates across AWS.",amazon-s3-C,favicon,base
 3,aws-lambda-C,aws-lambda,AWS Lambda,Common,70,70,Product,"Run code in response to events without managing servers. Auto-scales and charges per request/time, lowering ops work and cost for bursty workloads and integrations.",aws-lambda-C,favicon,base
@@ -90,7 +90,6 @@ Setnum,id,baseId,name,rarity,hp,attack,class,flavor,artKey,artType,Set
 99,bar-raiser-R,bar-raiser,Bar Raiser,Rare,80,40,AWS Culture,Hiring role focused on keeping the talent bar high. Reinforces long-term quality over short-term speed.,bar-raiser-R,image,base
 90,on-call-pager-UR,on-call-pager,On-Call Pager,Ultra Rare,90,50,AWS Culture,The moment you learn what 'ownership' feels like. Reliability work that keeps customers happy and teams honest.,on-call-pager-UR,image,base
 91,chime-call-UR,chime-call,Chime Call,Ultra Rare,90,50,AWS Culture,"Meetings happen. A lot. The unofficial soundtrack of collaboration, reviews, and quick syncs.",chime-call-UR,image,base
-92,two-pizza-launch-UR,two-pizza-launch,Two-Pizza Launch,Ultra Rare,90,50,AWS Culture,"When a small team ships something huge. Celebrates scrappy execution, clear ownership, and fast feedback loops.",two-pizza-launch-UR,image,base
-93,banana-cart-L,banana-cart,Banana Cart,Legendary,120,80,AWS Culture,"A legendary perk... as long as you like bananas. A loving nod to frugality: keep costs tight, invest where customers feel it.",banana-cart-L,image,base
-94,the-spheres-L,the-spheres,The Spheres,Legendary,2111,7,AWS Culture,Iconic Seattle workspace built around plants. A fun symbol that builder energy and environment matter - and a photo everyone recognizes.,the-spheres-L,image,base
-95,hq2-helix-L,hq2-helix,HQ2 Helix,Legendary,550,550,AWS Culture,"A bold, iconic building concept. A playful symbol of scale, ambition, and the occasional obsession with big bets.",hq2-helix-L,image,base
+92,banana-cart-L,banana-cart,Banana Cart,Legendary,120,80,AWS Culture,"A legendary perk... as long as you like bananas. A loving nod to frugality: keep costs tight, invest where customers feel it.",banana-cart-L,image,base
+93,the-spheres-L,the-spheres,The Spheres,Legendary,2111,7,AWS Culture,Iconic Seattle workspace built around plants. A fun symbol that builder energy and environment matter - and a photo everyone recognizes.,the-spheres-L,image,base
+94,hq2-helix-L,hq2-helix,HQ2 Helix,Legendary,550,550,AWS Culture,"A bold, iconic building concept. A playful symbol of scale, ambition, and the occasional obsession with big bets.",hq2-helix-L,image,base
