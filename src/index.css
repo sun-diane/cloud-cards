@@ -134,43 +134,33 @@
   }
 
   .chip-rarity {
-    color: hsl(var(--foreground));
-    border: 1px solid hsl(var(--reinvent-indigo) / 0.45);
-  }
-
-  .chip-rarity-uncommon,
-  .chip-rarity-rare,
-  .chip-rarity-ultra,
-  .chip-rarity-legendary {
-    color: hsl(var(--reinvent-indigo));
+    border: none;
+    font-weight: 600;
   }
 
   .chip-rarity-common {
-    background: linear-gradient(120deg, hsl(var(--reinvent-indigo) / 0.18), hsl(var(--reinvent-violet) / 0.2));
+    background: hsl(var(--rarity-common) / 0.2);
+    color: hsl(var(--rarity-common));
   }
 
   .chip-rarity-uncommon {
-    background: linear-gradient(120deg, hsl(var(--reinvent-violet) / 0.22), hsl(var(--reinvent-fuchsia) / 0.2));
+    background: hsl(var(--rarity-uncommon) / 0.2);
+    color: hsl(var(--rarity-uncommon));
   }
 
   .chip-rarity-rare {
-    background: linear-gradient(120deg, hsl(var(--reinvent-fuchsia) / 0.24), hsl(var(--reinvent-magenta) / 0.22));
+    background: hsl(var(--rarity-rare) / 0.2);
+    color: hsl(var(--rarity-rare));
   }
 
   .chip-rarity-ultra {
-    background: linear-gradient(120deg, hsl(var(--reinvent-violet) / 0.24), hsl(var(--reinvent-magenta) / 0.22));
-    border-color: hsl(var(--reinvent-fuchsia) / 0.55);
+    background: hsl(var(--rarity-ultra) / 0.2);
+    color: hsl(var(--rarity-ultra));
   }
 
   .chip-rarity-legendary {
-    background: linear-gradient(
-      110deg,
-      hsl(var(--reinvent-indigo) / 0.32) 0%,
-      hsl(var(--reinvent-violet) / 0.34) 35%,
-      hsl(var(--reinvent-fuchsia) / 0.34) 65%,
-      hsl(var(--reinvent-magenta) / 0.35) 100%
-    );
-    border-color: hsl(var(--reinvent-fuchsia) / 0.65);
+    background: hsl(var(--accent) / 0.2);
+    color: hsl(var(--accent));
   }
 
   .holo-shimmer {
