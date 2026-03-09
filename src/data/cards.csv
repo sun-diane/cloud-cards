@@ -58,10 +58,10 @@
 57,success-and-scale-bring-broad-responsibility-U,success-and-scale-bring-broad-responsibility,Success and Scale Bring Broad Responsibility,Uncommon,50,50,LP,Leaders consider the impact of their work and act responsibly as they grow.,success-and-scale-bring-broad-responsibility-U,image,base
 58,bias-for-action-UR,bias-for-action,Bias for Action,Ultra Rare,50,50,LP,Speed matters. Many decisions are reversible and should be made quickly with reasonable judgment.,bias-for-action-UR,image,base
 59,frugality-U,frugality,Frugality,Legendary,50,50,LP,Leaders accomplish more with less. Constraints drive resourcefulness and invention.,frugality-U,image,base
-60,aws-re-inforce-C,aws-re-inforce,AWS re:Inforce,Uncommon,80,40,Event,"Security-focused AWS conference. Practical guidance on identity, governance, and incident readiness.",aws-re-inforce-C,favicon,base
-61,aws-global-summits-U,aws-global-summits,AWS Global Summits,Uncommon,90,50,Event,Local events worldwide with keynotes and sessions. Meet the community and learn what's new.,aws-global-summits-U,favicon,base
-62,aws-innovate-online-conference-U,aws-innovate-online-conference,AWS Innovate Online Conference,Uncommon,90,50,Event,Online event series with focused tracks. Efficient way for teams to skill up quickly.,aws-innovate-online-conference-U,favicon,base
-63,awsome-day-R,awsome-day,AWSome Day,Rare,100,60,Event,Beginner-friendly AWS learning event. Great for onboarding teams into cloud fundamentals.,awsome-day-R,favicon,base
+60,aws-re-inforce-C,aws-re-inforce,AWS re:Inforce,Uncommon,80,40,Event,"Security-focused AWS conference. Practical guidance on identity, governance, and incident readiness.",aws-re-inforce-C,image,base
+61,aws-global-summits-U,aws-global-summits,AWS Global Summits,Uncommon,90,50,Event,Local events worldwide with keynotes and sessions. Meet the community and learn what's new.,aws-global-summits-U,image,base
+62,aws-innovate-online-conference-U,aws-innovate-online-conference,AWS Innovate Online Conference,Uncommon,90,50,Event,Online event series with focused tracks. Efficient way for teams to skill up quickly.,aws-innovate-online-conference-U,image,base
+63,awsome-day-R,awsome-day,AWSome Day,Rare,100,60,Event,Beginner-friendly AWS learning event. Great for onboarding teams into cloud fundamentals.,awsome-day-R,image,base
 64,aws-re-invent-C,aws-re-invent,AWS re:Invent,Legendary,1130,1204,Event,"Flagship AWS conference. Big launches, deep sessions, and the fastest way to learn what's changing.",aws-re-invent-C,image,base
 65,serverless-architecture-C,serverless-architecture,Serverless Architecture,Common,80,40,Concept,Design where the cloud handles scaling and infrastructure. Teams ship faster by focusing on code and events.,serverless-architecture-C,image,base
 66,block-storage-C,block-storage,Block Storage,Common,70,50,Concept,Disk-like storage for servers and databases. Prioritizes low latency and predictable performance.,block-storage-C,image,base
