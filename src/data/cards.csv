@@ -62,7 +62,7 @@
 61,aws-global-summits-U,aws-global-summits,AWS Global Summits,Uncommon,90,50,Event,Local events worldwide with keynotes and sessions. Meet the community and learn what's new.,aws-global-summits-U,image,base
 62,aws-innovate-online-conference-U,aws-innovate-online-conference,AWS Innovate Online Conference,Uncommon,90,50,Event,Online event series with focused tracks. Efficient way for teams to skill up quickly.,aws-innovate-online-conference-U,image,base
 63,awsome-day-R,awsome-day,AWSome Day,Rare,100,60,Event,Beginner-friendly AWS learning event. Great for onboarding teams into cloud fundamentals.,awsome-day-R,image,base
-64,aws-re-invent-C,aws-re-invent,AWS re:Invent,Legendary,1130,1204,Event,"Flagship AWS conference. Big launches, deep sessions, and the fastest way to learn what's changing.",aws-re-invent-C,image,base
+64,aws-re-invent-L,aws-re-invent,AWS re:Invent,Legendary,1130,1204,Event,"Flagship AWS conference. Big launches, deep sessions, and the fastest way to learn what's changing.",aws-re-invent-L,image,base
 65,serverless-architecture-C,serverless-architecture,Serverless Architecture,Common,80,40,Concept,Design where the cloud handles scaling and infrastructure. Teams ship faster by focusing on code and events.,serverless-architecture-C,image,base
 66,block-storage-C,block-storage,Block Storage,Common,70,50,Concept,Disk-like storage for servers and databases. Prioritizes low latency and predictable performance.,block-storage-C,image,base
 67,data-lake-C,data-lake,Data Lake,Common,90,50,Concept,Central store for raw and curated data. Enables analytics and AI by making data reusable across teams.,data-lake-C,image,base
