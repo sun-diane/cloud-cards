@@ -34,7 +34,7 @@ export default function AdModal({ onClose, onComplete }: AdModalProps) {
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1`}
             allow="autoplay; encrypted-media"
             allowFullScreen
-            className="w-full h-full"
+            className="w-full h-full border-0"
           />
         </div>
         <div className="flex items-center justify-between mt-4">
