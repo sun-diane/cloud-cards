@@ -182,16 +182,21 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(
-      95deg,
+      105deg,
       transparent 0%,
-      hsl(var(--reinvent-indigo) / 0.14) 18%,
-      hsl(var(--reinvent-violet) / 0.18) 38%,
-      hsl(var(--reinvent-fuchsia) / 0.16) 58%,
-      hsl(var(--reinvent-magenta) / 0.18) 78%,
+      transparent 20%,
+      hsl(var(--reinvent-indigo) / 0.22) 28%,
+      transparent 36%,
+      hsl(var(--reinvent-violet) / 0.2) 42%,
+      transparent 50%,
+      hsl(var(--reinvent-fuchsia) / 0.18) 58%,
+      transparent 66%,
+      hsl(var(--reinvent-magenta) / 0.2) 74%,
+      transparent 82%,
       transparent 100%
     );
-    background-size: 210% 100%;
-    animation: holo-move 3.8s linear infinite;
+    background-size: 300% 100%;
+    animation: holo-move 4.5s linear infinite;
     pointer-events: none;
     border-radius: inherit;
     z-index: 2;
@@ -208,19 +213,21 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      transparent 35%,
-      hsla(0, 0%, 80%, 0.4) 42%,
-      hsla(220, 8%, 76%, 0.45) 48%,
-      hsla(210, 6%, 78%, 0.4) 52%,
-      hsla(240, 8%, 76%, 0.45) 58%,
-      transparent 65%,
+      transparent 30%,
+      rgba(255, 255, 255, 0.5) 40%,
+      rgba(240, 240, 255, 0.55) 45%,
+      rgba(255, 255, 255, 0.6) 50%,
+      rgba(245, 245, 255, 0.55) 55%,
+      rgba(255, 255, 255, 0.5) 60%,
+      transparent 70%,
       transparent 100%
     );
-    background-size: 200% 100%;
+    background-size: 250% 100%;
     animation: ultra-move 4s linear infinite;
     pointer-events: none;
     border-radius: inherit;
     z-index: 2;
+    mix-blend-mode: overlay;
   }
 
   .flip-card {
