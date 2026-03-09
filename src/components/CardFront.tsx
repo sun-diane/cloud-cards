@@ -35,7 +35,7 @@ interface CardFrontProps {
   onClick?: () => void;
 }
 
-export default function CardFront({ card, count, large, owned = true, onClick }: CardFrontProps) {
+const CardFront = memo(function CardFront({ card, count, large, owned = true, onClick }: CardFrontProps) {
   const [imgError, setImgError] = useState(false);
   const artSrc = imgError ? getPlaceholder(card) : getArtSrc(card);
   const isLegendary = card.rarity === "Legendary";
