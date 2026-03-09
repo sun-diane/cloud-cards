@@ -86,6 +86,8 @@ export default function CardFront({ card, count, large, owned = true, onClick }:
         <img
           src={artSrc}
           alt={card.name}
+          loading="lazy"
+          decoding="async"
           onError={handleImgError}
           className={cn(
             "w-full h-full",
