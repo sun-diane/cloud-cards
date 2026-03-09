@@ -61,12 +61,18 @@ export default function CardFront({ card, count, large, owned = true, onClick }:
       {/* Art area */}
       <div className={cn(
         "relative overflow-hidden flex items-center justify-center",
-        card.artType === "favicon" ? "bg-muted/60" : "bg-muted",
+        card.artType === "favicon" ? "" : "bg-muted",
         large ? "h-[200px]" : "h-[140px]",
         isUltraRare || isLegendary
           ? "mx-0 my-0 rounded-none"
           : "mx-3 my-2 rounded-lg"
-      )}>
+      )}
+        style={card.artType === "favicon" ? {
+          backgroundImage: `url(${isUltraRare ? '/ui/bg-favicon-ultra.jpg' : '/ui/bg-favicon-common.jpg'})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        } : undefined}
+      >
         <img
           src={artSrc}
           alt={card.name}
