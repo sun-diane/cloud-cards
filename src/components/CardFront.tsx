@@ -1,7 +1,7 @@
-import { getArtSrc, getPlaceholder } from "@/data/artResolver";
+import { getArtAttemptCount, getArtSrcForAttempt, getPlaceholder } from "@/data/artResolver";
 import type { CardData } from "@/data/types";
 import { cn } from "@/lib/utils";
-import { useState, memo } from "react";
+import { useState, useEffect, memo } from "react";
 
 const rarityBorder: Record<string, string> = {
   Common: "card-border-common",
@@ -36,13 +36,18 @@ interface CardFrontProps {
 }
 
 const CardFront = memo(function CardFront({ card, count, large, owned = true, onClick }: CardFrontProps) {
-  const [imgError, setImgError] = useState(false);
-  const artSrc = imgError ? getPlaceholder(card) : getArtSrc(card);
+  const [attempt, setAttempt] = useState(0);
+  const attemptCount = getArtAttemptCount(card);
+  const artSrc = attempt < attemptCount ? getArtSrcForAttempt(card, attempt) : getPlaceholder(card);
   const isLegendary = card.rarity === "Legendary";
   const isUltraRare = card.rarity === "Ultra Rare";
 
+  useEffect(() => {
+    setAttempt(0);
+  }, [card.id]);
+
   const handleImgError = () => {
-    setImgError(true);
+    setAttempt((prev) => prev + 1);
   };
 
   return (
@@ -125,3 +130,4 @@ const CardFront = memo(function CardFront({ card, count, large, owned = true, on
 });
 
 export default CardFront;
+
