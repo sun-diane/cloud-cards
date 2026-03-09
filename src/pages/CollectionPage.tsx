@@ -6,7 +6,6 @@ import type { CardData } from "@/data/types";
 import { cn } from "@/lib/utils";
 import { Search, Download, Upload, RotateCcw, X, Share2 } from "lucide-react";
 import { toast } from "sonner";
-import { toast } from "sonner";
 import Papa from "papaparse";
 import { createBrandedShareBlob } from "@/lib/shareImage";
 
