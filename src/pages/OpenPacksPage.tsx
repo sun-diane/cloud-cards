@@ -141,7 +141,7 @@ export default function OpenPacksPage() {
           ) : (
             <div className="flex flex-col items-center gap-4">
               <img
-                src="/ui/pack-art.png"
+                src={`${import.meta.env.BASE_URL}ui/pack-art.png`}
                 alt="Pack"
                 className="w-72 opacity-50 grayscale"
               />
