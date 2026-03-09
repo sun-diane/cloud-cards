@@ -15,7 +15,7 @@ const rarityGradientColor: Record<string, { start: string; end: string }> = {
   Common: { start: "hsl(220 8% 96%)", end: "hsl(220 8% 88%)" },
   Uncommon: { start: "hsl(142 20% 95%)", end: "hsl(142 25% 85%)" },
   Rare: { start: "hsl(217 35% 95%)", end: "hsl(217 40% 85%)" },
-  "Ultra Rare": { start: "hsl(270 30% 93%)", end: "hsl(330 35% 88%)" },
+  "Ultra Rare": { start: "hsl(280 45% 90%)", end: "hsl(300 50% 82%)" },
   Legendary: { start: "hsl(30 50% 95%)", end: "hsl(30 60% 85%)" },
 };
 
@@ -77,7 +77,7 @@ export default function CardFront({ card, count, large, owned = true, onClick }:
       )}
         style={card.artType === "favicon" ? {
           backgroundImage: isUltraRare
-            ? 'linear-gradient(135deg, hsl(270 30% 93%) 0%, hsl(330 35% 88%) 100%)'
+            ? 'linear-gradient(135deg, hsl(280 45% 90%) 0%, hsl(300 50% 82%) 100%)'
             : `linear-gradient(135deg, ${(rarityGradientColor[card.rarity] || rarityGradientColor.Common).start} 0%, ${(rarityGradientColor[card.rarity] || rarityGradientColor.Common).end} 100%)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
