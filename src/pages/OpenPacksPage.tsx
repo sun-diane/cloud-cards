@@ -5,7 +5,7 @@ import CardFront from "@/components/CardFront";
 import CardBack from "@/components/CardBack";
 import AdModal from "@/components/AdModal";
 import { cn } from "@/lib/utils";
-import { createShareBrandingHtml } from "@/components/ShareBranding";
+import { createBrandedShareBlob } from "@/lib/shareImage";
 import { toPng } from "html-to-image";
 import { Share2 } from "lucide-react";
 import { toast } from "sonner";
