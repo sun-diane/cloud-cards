@@ -153,7 +153,7 @@ export default function OpenPacksPage() {
           ) : (
             <div className="flex flex-col items-center gap-4">
               <img
-                src="/ui/pack-art.webp"
+                src="/ui/pack-art.png"
                 alt="Pack"
                 className="w-56 rounded-xl card-shadow opacity-50 grayscale"
               />
