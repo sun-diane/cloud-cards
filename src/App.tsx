@@ -17,14 +17,14 @@ const App = () => (
       <Toaster />
       <Sonner />
       <GameProvider>
-        <BrowserRouter>
+        <HashRouter>
           <AppNav />
           <Routes>
             <Route path="/" element={<OpenPacksPage />} />
             <Route path="/collection" element={<CollectionPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </GameProvider>
     </TooltipProvider>
   </QueryClientProvider>
