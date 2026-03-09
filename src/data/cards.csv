@@ -1,4 +1,4 @@
-﻿Setnum,id,baseId,name,rarity,hp,attack,class,flavor,artKey,artType,Set
+Setnum,id,baseId,name,rarity,hp,attack,class,flavor,artKey,artType,Set
 1,amazon-ec2-C,amazon-ec2,Amazon EC2,Common,80,40,Product,"Virtual machines on demand. Pay only for what you run, scale up/down quickly, and deploy globally. Entry point for AWS customer acquisition and long-term infrastructure spend.",amazon-ec2-C,favicon,base
 2,amazon-s3-C,amazon-s3,Amazon S3,Common,50,60,Product,"Object storage for files and data at any scale. Used for backups, app assets, and data lakes because it's durable, low cost, and integrates across AWS.",amazon-s3-C,favicon,base
 3,aws-lambda-C,aws-lambda,AWS Lambda,Common,70,70,Product,"Run code in response to events without managing servers. Auto-scales and charges per request/time, lowering ops work and cost for bursty workloads and integrations.",aws-lambda-C,favicon,base
@@ -40,8 +40,8 @@
 39,amazon-sagemaker-L,amazon-sagemaker,Amazon SageMaker,Legendary,150,40,Product,"End-to-end platform to build, train, and deploy ML models. MLOps tools reduce time from prototype to production and improve consistency and compliance.",amazon-sagemaker-L,image,base
 40,amazon-q-developer-L,amazon-q-developer,Amazon Q Developer,Legendary,90,90,Product,"AI assistant for developers. Helps write code, explain errors, and generate docs to improve productivity and shorten cycle time.",amazon-q-developer-L,image,base
 41,aws-trainium-L,aws-trainium,AWS Trainium,Legendary,150,60,Product,AWS chips optimized for training large AI models. Reduce training cost and increase throughput for large-scale experimentation.,aws-trainium-L,image,base
-42,amazon-athena-L,amazon-athena,Amazon Athena,Legendary,120,80,Product,Query data in S3 using SQL without running servers. Pay per query for quick analysis and fast insights.,amazon-athena-L,image,base
-43,amazon-s3-glacier-L,amazon-s3-glacier,Amazon S3 Glacier,Legendary,120,80,Product,Low-cost storage for long-term archives. Cut retention costs for compliance and backups while keeping data retrievable when needed.,amazon-s3-glacier-L,image,base
+42,amazon-quick-suite-L,quick-suite,Amaozn Quick Suite,Legendary,112,46,AI/ML,"An AI workspace for nontechnical teams that can draft docs and emails, summarize meetings, answer questions from your files, and automate simple requests—all from plain-language prompts.",amazon-quick-suite-L,image, base
+43,amazon-connect-L,amazon-connect,Amazon Connect,Legendary,110,44,Customer Experience,"A cloud contact center for customer support. Teams can set up phone and chat help, route customers to the right agent, see customer details, and track service quality—all without running call-center hardware.",amazon-connect-L,image, base
 44,customer-obsession-C,customer-obsession,Customer Obsession,Common,50,50,LP,Leaders start with the customer and work backwards. They earn and keep customer trust.,customer-obsession-C,image,base
 45,ownership-C,ownership,Ownership,Common,50,50,LP,Leaders act on behalf of the entire company. They never say 'that's not my job.',ownership-C,image,base
 46,invent-and-simplify-C,invent-and-simplify,Invent and Simplify,Common,50,50,LP,Leaders expect and require innovation and invention. They simplify to move faster.,invent-and-simplify-C,image,base
