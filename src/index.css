@@ -134,9 +134,15 @@
   }
 
   .chip-rarity {
-    color: hsl(var(--reinvent-chip-foreground));
+    color: hsl(var(--foreground));
     border: 1px solid hsl(var(--reinvent-indigo) / 0.45);
-    text-shadow: 0 1px 4px hsl(var(--foreground) / 0.25);
+  }
+
+  .chip-rarity-uncommon,
+  .chip-rarity-rare,
+  .chip-rarity-ultra,
+  .chip-rarity-legendary {
+    color: hsl(var(--reinvent-indigo));
   }
 
   .chip-rarity-common {
