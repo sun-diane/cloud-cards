@@ -68,7 +68,9 @@ export default function CardFront({ card, count, large, owned = true, onClick }:
           : "mx-3 my-2 rounded-lg"
       )}
         style={card.artType === "favicon" ? {
-          backgroundImage: `url(${isUltraRare ? '/ui/bg-favicon-ultra.jpg' : '/ui/bg-favicon-common.jpg'})`,
+          backgroundImage: isUltraRare
+            ? 'url(/ui/bg-favicon-common.jpg)'
+            : 'radial-gradient(circle, hsl(220 10% 94%) 0%, hsl(220 10% 85%) 100%)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         } : undefined}
