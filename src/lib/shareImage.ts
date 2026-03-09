@@ -17,11 +17,21 @@ export async function createBrandedShareBlob(
   type: ShareType,
   backgroundColor: string,
 ): Promise<Blob> {
+  // Temporarily force all lazy images to eager so html-to-image can capture them
+  const lazyImgs = element.querySelectorAll('img[loading="lazy"]');
+  lazyImgs.forEach((img) => img.setAttribute("loading", "eager"));
+
+  // Give images a moment to start loading
+  await new Promise((r) => setTimeout(r, 300));
+
   const contentUrl = await toPng(element, {
     backgroundColor,
     pixelRatio: 2,
     cacheBust: true,
   });
+
+  // Restore lazy loading
+  lazyImgs.forEach((img) => img.setAttribute("loading", "lazy"));
 
   const contentImg = await loadImage(contentUrl);
   const logoImg = await loadImage("/favicon.png").catch(() => null);
