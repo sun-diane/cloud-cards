@@ -133,7 +133,7 @@ export default function OpenPacksPage() {
               className="group relative cursor-pointer transition-transform hover:scale-105 active:scale-95"
             >
               <img
-                src="/ui/pack-art.png"
+                src={`${import.meta.env.BASE_URL}ui/pack-art.png`}
                 alt="Open Pack"
                 className="w-72"
               />
