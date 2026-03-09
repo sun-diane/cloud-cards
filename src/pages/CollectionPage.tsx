@@ -98,29 +98,8 @@ export default function CollectionPage() {
     if (!collectionRef.current || sharing) return;
     setSharing(true);
     try {
-      // Build a fixed-width wrapper with branding
-      const wrapper = document.createElement("div");
-      wrapper.style.cssText = "position:fixed;left:-9999px;top:0;z-index:-1;width:1200px;background:#ffffff;padding:0;";
-
-      // Add branding
-      const brandingHtml = createShareBrandingHtml("collection");
-      wrapper.insertAdjacentHTML("beforeend", brandingHtml);
-
-      // Clone the grid and force 4-col layout with inline styles (overrides responsive classes)
-      const clone = collectionRef.current.cloneNode(true) as HTMLElement;
-      clone.querySelectorAll("img").forEach((img) => { img.loading = "eager"; });
-      clone.style.cssText = "display:grid;grid-template-columns:repeat(4,1fr);gap:20px;justify-items:center;padding:8px;width:100%;";
-      wrapper.appendChild(clone);
-
-      document.body.appendChild(wrapper);
-      await new Promise((r) => setTimeout(r, 200));
-      const dataUrl = await toPng(wrapper, { backgroundColor: "#ffffff" });
-      document.body.removeChild(wrapper);
-      const res = await fetch(dataUrl);
-      const blob = await res.blob();
-      await navigator.clipboard.write([
-        new ClipboardItem({ "image/png": blob }),
-      ]);
+      const blob = await createBrandedShareBlob(collectionRef.current, "collection", "#ffffff");
+      await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
       toast.success("Collection copied to clipboard!");
     } catch {
       toast.error("Failed to copy collection image.");
